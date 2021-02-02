@@ -1,3 +1,4 @@
+import HelmetMeta from './HelmetMeta';
 import Button from './Button';
 import NoResult from './NoResult';
 import Image from './Image';
@@ -7,6 +8,7 @@ import FooterMenu from './Menus/FooterMenu';
 import MobileMenu from './Menus/MobileMenu';
 
 export {
+  HelmetMeta,
   Button,
   NoResult,
   Image,
