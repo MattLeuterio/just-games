@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import { withMediaQueries } from "../../hoc/withMediaQueries";
-import { HeaderMenu, MobileMenu } from "..";
-import { HamburgerMenu, Image } from "../../atoms";
+import { HamburgerMenu, Image, HeaderMenu, MobileMenu } from "../../atoms";
 import logo from "../../ui/assets/img/logo.png";
 import { Search as SearchIcon } from "react-ionicons";
 import { ActionContainer, Container } from "./style";

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../../ui/theme';
+import theme from '../../../ui/theme';
 
 export const Container = styled.div`
   position: fixed;

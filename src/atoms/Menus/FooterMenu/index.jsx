@@ -1,10 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import { MenuElements } from "./style";
-import { NavLink } from "react-router-dom";
-import Roboto from "../../ui/typography/roboto";
-import { useSelector } from "react-redux";
-import { selectMenuFooter } from "../../features/menuElements/menuElementsSlice";
+import Roboto from "../../../ui/typography/roboto";
+import { selectMenuFooter } from "../../../features/menuElements/menuElementsSlice";
 
 const FooterMenu = () => {
   const footerMenuElements = useSelector(selectMenuFooter);

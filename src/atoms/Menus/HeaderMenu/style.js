@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import theme from '../../ui/theme';
+import theme from '../../../ui/theme';
 
 export const MenuElements = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ export const MenuElements = styled.div`
   }
 
   a {
+    position: relative;
     
     &:not(:last-child) {
       margin-right: 30px;
@@ -27,7 +28,9 @@ export const MenuElements = styled.div`
 `;
 
 export const Line = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 8px);
   width: 130%;
-  margin-top: 8px;
   border: 1px solid ${theme.colors.primary.light};
 `;

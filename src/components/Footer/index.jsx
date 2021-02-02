@@ -3,8 +3,7 @@ import React from "react";
 import { withMediaQueries } from "../../hoc/withMediaQueries";
 import { Container, Copyright, Link } from "./style";
 import logo from "../../ui/assets/img/logo.png";
-import { Image } from "../../atoms";
-import { FooterMenu } from "..";
+import { Image, FooterMenu } from "../../atoms";
 import { useSelector } from "react-redux";
 import { selectMenuFooter } from "../../features/menuElements/menuElementsSlice";
 
