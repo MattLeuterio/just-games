@@ -6,6 +6,7 @@ import HamburgerMenu from './HamburgerMenu';
 import HeaderMenu from './Menus/HeaderMenu';
 import FooterMenu from './Menus/FooterMenu';
 import MobileMenu from './Menus/MobileMenu';
+import CircleProgressBar from './CircleProgressBar';
 
 export {
   HelmetMeta,
@@ -15,5 +16,6 @@ export {
   HamburgerMenu,
   HeaderMenu,
   FooterMenu,
-  MobileMenu
+  MobileMenu,
+  CircleProgressBar
 };

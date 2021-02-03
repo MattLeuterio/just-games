@@ -13,6 +13,7 @@ const App = () => {
       <Switch location={location} key={location.key}>
         <Route exact path="/shooter" component={Category} />
         <Route exact path="/adventure" component={Category} />
+        <Route exact path="/the-last-of-us" component={About} />
         <Route exact path="/about" component={About} />
         <Route exact path="/" component={Home} />
       </Switch>

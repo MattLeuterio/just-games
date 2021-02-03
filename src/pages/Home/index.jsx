@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   HomeContainer,
@@ -8,12 +8,38 @@ import {
   Quote,
   QuoteAuthor,
   QuoteText,
+  TitleNewGames,
 } from "./style";
-import Roboto from "../../ui/typography/roboto";
 import { HelmetMeta } from "../../atoms";
+import { CardGame } from "../../components";
 import { getRandomInt } from "../../utils";
 
+const games = [
+  {
+    path: "/the-last-of-us",
+    title: "The Last of Us",
+    category: "Sport",
+    platform: "Playstation 3",
+    vote: 91,
+  },
+  {
+    path: "/the-last-of-us",
+    title: "The Last of Us",
+    category: "Sport",
+    platform: "Playstation 3",
+    vote: 91,
+  },
+  {
+    path: "/the-last-of-us",
+    title: "The Last of Us",
+    category: "Sport",
+    platform: "Playstation 3",
+    vote: 91,
+  },
+];
+
 const Home = () => {
+  const [gamesList, setGamesList] = useState(games);
   const quotes = [
     {
       text:
@@ -36,7 +62,6 @@ const Home = () => {
       author: "Kevin Garnett",
     },
   ];
-
   const randomQuote = getRandomInt(0, quotes.length - 1);
 
   return (
@@ -49,7 +74,20 @@ const Home = () => {
             - {quotes[randomQuote].author}
           </QuoteAuthor>
         </Quote>
-        <NewGames></NewGames>
+        <NewGames>
+          <TitleNewGames>New Games</TitleNewGames>
+          {gamesList.map((game, index) => (
+            <CardGame
+              key={index}
+              path={game.path}
+              title={game.title}
+              category={game.category}
+              vote={game.vote}
+              platform={game.platform}
+              highlight
+            />
+          ))}
+        </NewGames>
         <JumboBg />
       </Jumbotron>
     </HomeContainer>

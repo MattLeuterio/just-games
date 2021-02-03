@@ -7,7 +7,7 @@ export const Container = styled.footer`
   position: relative;
   width: 100%;
   height: ${FooterHeight}px;
-  background: linear-gradient(109.08deg,#8e2de0c4 12.85%,#4a00e0fa 87.15%), url(${Background});
+  background: ${theme.colors.gradients.primaryTransparent}, url(${Background});
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
