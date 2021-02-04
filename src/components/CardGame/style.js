@@ -1,18 +1,18 @@
 import styled from 'styled-components';
 import theme from '../../ui/theme';
-import CardBg from '../../ui/assets/img/tlou-bg.jpg';
 
 export const CardContainer = styled.div`
-  width: 327px;
-  height: 214px;
+  position: relative;
+  width: 100%;
+  height: 100%;
   padding: 25px 20px;
   border-radius: 6px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   background: ${props => props.highlight ?
-    `${theme.colors.gradients.blue}, url(${CardBg})`
-    : `${theme.colors.gradients.card}, url(${CardBg})` 
+    `${theme.colors.gradients.blue}, url(${props.cover})`
+    : `${theme.colors.gradients.card}, url(${props.cover})` 
   };
   background-position: center;
   background-repeat: no-repeat;
@@ -20,7 +20,13 @@ export const CardContainer = styled.div`
   transition: all .250s ease-in-out;
 
   &:hover {
-    transform: translateY(-7px);
+    background: ${props => !props.highlight &&
+    `${theme.colors.gradients.blue}, url(${props.cover})`
+    };
+    transform: ${props => props.highlight && `translateY(-7px)`};
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   `;
 

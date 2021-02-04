@@ -5,10 +5,18 @@ import PropTypes from "prop-types";
 import { CircleProgressBar } from "../../atoms";
 import { CardContainer, Top, Bottom, Title, Category, Platform } from "./style";
 
-const CardGame = ({ path, title, category, platform, vote, highlight }) => {
+const CardGame = ({
+  path,
+  title,
+  category,
+  platform,
+  cover,
+  vote,
+  highlight,
+}) => {
   return (
     <NavLink key={path} exact to={path}>
-      <CardContainer highlight={highlight}>
+      <CardContainer cover={cover} highlight={highlight}>
         <Top>
           <Title>{title}</Title>
           <Category>{category}</Category>
@@ -34,6 +42,7 @@ CardGame.propTypes = {
   title: PropTypes.string,
   category: PropTypes.string,
   platform: PropTypes.string,
+  cover: PropTypes.string,
   vote: PropTypes.number,
   highlight: PropTypes.bool,
 };

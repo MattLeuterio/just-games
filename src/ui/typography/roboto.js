@@ -30,7 +30,6 @@ const types = {
     fontWeight: 400
   },
   h2: {
-    color: theme.colors.primary.lightblack,
     fontSize: 18,
     fontWeight: 400
   },
@@ -47,6 +46,10 @@ const types = {
   mobileMenuElements: {
     fontSize: 24,
     fontWeight: 700
+  },
+  carouselTitle: {
+    fontSize: 27,
+    letterSpacing: '5px'
   },
   pageTitle: {
     fontSize: 42,

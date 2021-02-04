@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import counterReducer from '../features/counter/counterSlice';
 import menuElementsReducer from '../features/menuElements/menuElementsSlice';
+import quoteJumbotronReducer from '../features/quoteJumbotron/quoteJumbotronSlice';
+import listGamesReducer from '../features/listGames/listGamesSlice';
 
 export default configureStore({
   reducer: {
     counter: counterReducer,
-    menuElements: menuElementsReducer
+    menuElements: menuElementsReducer,
+    quoteJumbotron: quoteJumbotronReducer,
+    listGames: listGamesReducer
   },
 });
