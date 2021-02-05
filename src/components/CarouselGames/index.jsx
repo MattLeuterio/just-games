@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Carousel from "react-elastic-carousel";
 import PropTypes from "prop-types";
 
 import { BadgeTop, CarouselItem, SliderRow, Title } from "./style";
 import Roboto from "../../ui/typography/roboto";
-import { selectListGames } from "../../features/listGames/listGamesSlice";
 import { CardGame } from "..";
 
-const CarouselGames = ({ title = "Title" }) => {
-  const [games, setGames] = useState(useSelector(selectListGames));
+const CarouselGames = ({ title = "Title", list }) => {
+  const [games, setGames] = useState([]);
+
+  useEffect(() => {
+    setGames(list);
+  }, [list, games]);
+
   const settings = {
     pagination: false,
     itemPadding: [0, 5, 0, 5],
@@ -28,16 +32,16 @@ const CarouselGames = ({ title = "Title" }) => {
         <Roboto type="carouselTitle">{title}</Roboto>
       </Title>
       <Carousel {...settings}>
-        {games.map((game) => (
-          <CarouselItem key={game.path}>
+        {games?.map((game) => (
+          <CarouselItem key={game.slug}>
             <CardGame
-              key={game.path}
-              path={game.path}
-              title={game.title}
+              key={game.slug}
+              path={`/${game.slug}`}
+              title={game.name}
               category={game.category}
-              vote={game.vote}
-              platform={game.platform}
-              cover={game.cover}
+              vote={game.metacritic}
+              platform={game.platforms[0].platform.name}
+              cover={game.background_image}
             />
           </CarouselItem>
         ))}
