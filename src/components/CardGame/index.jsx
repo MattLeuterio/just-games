@@ -22,14 +22,16 @@ const CardGame = ({
           <Category>{category}</Category>
         </Top>
         <Bottom>
-          <CircleProgressBar
-            sizeContainer={80}
-            fontSize={25}
-            widthStroke={7}
-            sizeStroke={217}
-            sizeCircle={35}
-            vote={vote}
-          />
+          {vote > 0 && (
+            <CircleProgressBar
+              sizeContainer={80}
+              fontSize={25}
+              widthStroke={7}
+              sizeStroke={217}
+              sizeCircle={35}
+              vote={vote}
+            />
+          )}
           <Platform>{platform}</Platform>
         </Bottom>
       </CardContainer>

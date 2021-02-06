@@ -25,7 +25,6 @@ import {
 
 const Home = () => {
   const dispatch = useDispatch();
-  const popularList = useSelector(selectPopular);
   const adventureList = useSelector(selectTopAdventure);
   const shooterList = useSelector(selectTopShooter);
   const indieList = useSelector(selectTopIndie);
@@ -49,7 +48,6 @@ const Home = () => {
     <HomeContainer>
       <HelmetMeta titlePage="Just Games - Home" path="/" />
       <Jumbotron />
-      {/* <CarouselGames title="popular" list={popularList} /> */}
       <CarouselGames title="adventure" list={adventureList} />
       <CarouselGames title="shooter" list={shooterList} />
       <CarouselGames title="indie" list={indieList} />
