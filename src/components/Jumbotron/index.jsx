@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
-import { CircleProgressBar } from "../../atoms";
 import {
   JumboBg,
   JumbotronContainer,
@@ -12,16 +11,23 @@ import {
   QuoteText,
   TitleNewGames,
 } from "./style";
-import { selectListGames } from "../../features/listGames/listGamesSlice";
+import { getNew, selectNew } from "../../features/listGames/listGamesSlice";
 import { selectQuote } from "../../features/quoteJumbotron/quoteJumbotronSlice";
 import { getRandomInt } from "../../utils";
 import { CardGame } from "..";
 import BackgroundHome from "../../ui/assets/img/home-bg.jpg";
 
 const Jumbotron = ({ type, background = BackgroundHome }) => {
-  const [gamesList, setGamesList] = useState(useSelector(selectListGames));
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getNew());
+  }, [dispatch]);
+
   const quotes = useSelector(selectQuote);
   const randomQuote = getRandomInt(0, quotes?.length - 1);
+
+  const listNewGame = useSelector(selectNew);
 
   return (
     <JumbotronContainer>
@@ -33,15 +39,15 @@ const Jumbotron = ({ type, background = BackgroundHome }) => {
       </Quote>
       <NewGames>
         <TitleNewGames>New Games</TitleNewGames>
-        {gamesList.slice(0, 3).map((game) => (
+        {listNewGame.map((game) => (
           <CardGame
-            key={game.path}
-            path={game.path}
-            title={game.title}
+            key={game.slug}
+            path={game.slug}
+            title={game.name}
             category={game.category}
-            vote={game.vote}
-            platform={game.platform}
-            cover={game.cover}
+            vote={game.metacritic}
+            platform={game.platforms[0].platform.name}
+            cover={game.background_image}
             highlight
           />
         ))}

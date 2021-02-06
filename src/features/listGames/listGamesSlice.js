@@ -1,10 +1,75 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+
+export const getNew = createAsyncThunk(
+  'listGames/getNew',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games/lists/main', { params: { page_size: '3', ordering: '-released'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
+export const getPopular = createAsyncThunk(
+  'listGames/getPopular',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games/lists/main', { params: { page_size: '10', ordering: '-relevance'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
 export const getTopAdventure = createAsyncThunk(
   'listGames/getTopAdventure',
   async () => {
     return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '3'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
+export const getTopShooter = createAsyncThunk(
+  'listGames/getTopShooter',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '2'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
+export const getTopIndie = createAsyncThunk(
+  'listGames/getTopIndie',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '51'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
+export const getTopRPG = createAsyncThunk(
+  'listGames/getTopRPG',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '5'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
+export const getTopMOBA = createAsyncThunk(
+  'listGames/getTopMOBA',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '59'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
+export const getTopSport = createAsyncThunk(
+  'listGames/getTopSport',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '15'} })
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
+export const getTopArcade = createAsyncThunk(
+  'listGames/getTopArcade',
+  async () => {
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '11'} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -94,21 +159,44 @@ export const listGamesSlice = createSlice({
         vote: 91,
       },
     ],
+    listNew: [],
+    listPopular: [],
     listTopAdventure: [],
-    status: null
+    listTopShooter: [],
+    listTopIndie: [],
+    listTopRPG: [],
+    listTopMOBA: [],
+    listTopSport: [],
+    listTopArcade: [],
   },
   extraReducers: {
-    [getTopAdventure.pending]: (state, action) => {
-      state.status = 'loading'
+    [getNew.fulfilled]: (state, { payload }) => {
+      state.listNew = payload
+    },
+    [getPopular.fulfilled]: (state, { payload }) => {
+      state.listPopular = payload
     },
     [getTopAdventure.fulfilled]: (state, { payload }) => {
       state.listTopAdventure = payload
-      state.status = 'success'
     },
-    [getTopAdventure.rejected]: (state, {payload}) => {
-      console.log(payload)
-      state.status = 'failed'
-    }
+    [getTopShooter.fulfilled]: (state, { payload }) => {
+      state.listTopShooter = payload
+    },
+    [getTopIndie.fulfilled]: (state, { payload }) => {
+      state.listTopIndie = payload
+    },
+    [getTopRPG.fulfilled]: (state, { payload }) => {
+      state.listTopRPG = payload
+    },
+    [getTopMOBA.fulfilled]: (state, { payload }) => {
+      state.listTopMOBA = payload
+    },
+    [getTopSport.fulfilled]: (state, { payload }) => {
+      state.listTopSport = payload
+    },
+    [getTopArcade.fulfilled]: (state, { payload }) => {
+      state.listTopArcade = payload
+    },
   }
 });
 
@@ -116,6 +204,14 @@ export const listGamesSlice = createSlice({
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectListGames = state => state.listGames.games;
+export const selectNew = state => state.listGames.listNew;
+export const selectPopular = state => state.listGames.listPopular;
 export const selectTopAdventure = state => state.listGames.listTopAdventure;
+export const selectTopShooter = state => state.listGames.listTopShooter;
+export const selectTopIndie = state => state.listGames.listTopIndie;
+export const selectTopRPG = state => state.listGames.listTopRPG;
+export const selectTopMOBA = state => state.listGames.listTopMOBA;
+export const selectTopSport = state => state.listGames.listTopSport;
+export const selectTopArcade = state => state.listGames.listTopArcade;
 
 export default listGamesSlice.reducer;

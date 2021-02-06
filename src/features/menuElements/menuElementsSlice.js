@@ -33,8 +33,8 @@ export const menuElementsSlice = createSlice({
         path: "/moba",
       },
       {
-        title: "Simulator",
-        path: "/simulator",
+        title: "Arcade",
+        path: "/arcade",
       },
     ],
     footer: [

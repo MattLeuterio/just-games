@@ -3,7 +3,7 @@ import theme from '../../ui/theme';
 
 export const SliderRow = styled.div`
   position: relative;
-  margin: 50px 0;
+  margin: ${props => !props.load ? '50px 0px' : '50px 1px'};
 
   .rec-carousel-wrapper {
     & > div {

@@ -56,11 +56,11 @@ export const QuoteText = styled.div`
     position: absolute;
     top: -15px;
     left: -22px;
-    font-size: 58px;
+    font-size: 48px;
     font-style: italic;
 
     @media ${theme.device.tabletL} {
-    font-size: 98px;
+    font-size: 80px;
     top: -23px;
     left: -38px;
     }

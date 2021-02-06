@@ -9,10 +9,16 @@ import { CardGame } from "..";
 
 const CarouselGames = ({ title = "Title", list }) => {
   const [games, setGames] = useState([]);
+  const [load, setLoad] = useState(false);
 
   useEffect(() => {
     setGames(list);
+    setLoad(true);
   }, [list, games]);
+
+  setTimeout(() => {
+    setLoad(false);
+  }, 1000);
 
   const settings = {
     pagination: false,
@@ -22,30 +28,33 @@ const CarouselGames = ({ title = "Title", list }) => {
       { width: 550, itemsToShow: 2 },
       { width: 850, itemsToShow: 3 },
       { width: 1150, itemsToShow: 4 },
+      { width: 1550, itemsToShow: 5 },
     ],
   };
 
   return (
-    <SliderRow>
+    <SliderRow load={load}>
       <Title>
         {title.toLowerCase() !== "popular" && <BadgeTop>top 10</BadgeTop>}
         <Roboto type="carouselTitle">{title}</Roboto>
       </Title>
-      <Carousel {...settings}>
-        {games?.map((game) => (
-          <CarouselItem key={game.slug}>
-            <CardGame
-              key={game.slug}
-              path={`/${game.slug}`}
-              title={game.name}
-              category={game.category}
-              vote={game.metacritic}
-              platform={game.platforms[0].platform.name}
-              cover={game.background_image}
-            />
-          </CarouselItem>
-        ))}
-      </Carousel>
+      {!!games && (
+        <Carousel {...settings}>
+          {games?.map((game) => (
+            <CarouselItem key={game.slug}>
+              <CardGame
+                key={game.slug}
+                path={`/${game.slug}`}
+                title={game.name}
+                category={game.category}
+                vote={game.metacritic}
+                platform={game.platforms[0].platform.name}
+                cover={game.background_image}
+              />
+            </CarouselItem>
+          ))}
+        </Carousel>
+      )}
     </SliderRow>
   );
 };
