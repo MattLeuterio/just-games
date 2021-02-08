@@ -27,6 +27,7 @@ const colors = {
     card: 'linear-gradient(180deg, rgba(32, 32, 32, 0.55) 0%, rgba(14, 14, 14, 0.78) 100%)',
     navbar: 'linear-gradient(180deg, #4A00E0 0%, rgba(74, 0, 224, 0) 69.01%)',
     bg: 'linear-gradient(180deg, #8E2DE0 0%, rgba(142, 45, 224, 0) 100%)',
+    gameHeader: 'linear-gradient(179.83deg,rgba(0,0,0,0.6) 54.31%,#4A00E0 83.33%)',
   }
 };
 

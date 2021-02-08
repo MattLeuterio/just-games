@@ -1,4 +1,5 @@
 import HelmetMeta from './HelmetMeta';
+import ScrollToTop from './ScrollToTop';
 import Button from './Button';
 import NoResult from './NoResult';
 import Image from './Image';
@@ -10,6 +11,7 @@ import CircleProgressBar from './CircleProgressBar';
 
 export {
   HelmetMeta,
+  ScrollToTop,
   Button,
   NoResult,
   Image,
@@ -17,5 +19,5 @@ export {
   HeaderMenu,
   FooterMenu,
   MobileMenu,
-  CircleProgressBar
+  CircleProgressBar,
 };

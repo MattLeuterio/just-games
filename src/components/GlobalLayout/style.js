@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { HeaderHeight } from '../../const';
 
 export const PageContainer = styled.div`
   width: 100%;

@@ -24,6 +24,7 @@ export const Circle = styled.circle`
 
   &:nth-child(1) {
     stroke-dashoffset: 0;
+    stroke-dasharray: ${props => props.sizeStrokeTotal};
   }
 
   &:nth-child(2) {

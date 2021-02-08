@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import Carousel from "react-elastic-carousel";
 import PropTypes from "prop-types";
 
@@ -44,7 +43,7 @@ const CarouselGames = ({ title = "Title", list }) => {
             <CarouselItem key={game.slug}>
               <CardGame
                 key={game.slug}
-                path={`/${game.slug}`}
+                path={game.slug}
                 title={game.name}
                 category={game.category}
                 vote={game.metacritic}

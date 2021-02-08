@@ -15,7 +15,7 @@ const CardGame = ({
   highlight,
 }) => {
   return (
-    <NavLink key={path} exact to={path}>
+    <NavLink key={path} exact to={`game/${path}`}>
       <CardContainer cover={cover} highlight={highlight}>
         <Top>
           <Title>{title}</Title>
@@ -27,7 +27,8 @@ const CardGame = ({
               sizeContainer={80}
               fontSize={25}
               widthStroke={7}
-              sizeStroke={217}
+              sizeStroke={210}
+              sizeStrokeTotal={218}
               sizeCircle={35}
               vote={vote}
             />

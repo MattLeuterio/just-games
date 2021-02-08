@@ -2,18 +2,21 @@ import styled from 'styled-components';
 import theme from '../../ui/theme';
 
 export const JumbotronContainer = styled.div`
-  padding-top: 400px;
-  margin-bottom: 420px;
+  padding-top: ${props => props.type === 'home' ? "180px" : "0"};
+  margin-bottom: ${props => props.type === 'home' ? "480px" : "0"};
   position: relative;
-  height: 100vh;
+  height: ${props => props.type === 'home' ? `100vh` : `600px`};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  
+  @media ${theme.device.tablet} {
+    min-height: 700px;
+  }
   @media ${theme.device.tabletL} {
     padding-top: 0;
-    margin-bottom: 300px;
+    margin-bottom: 00px;
     flex-direction: row;
   }
 `;
@@ -24,15 +27,13 @@ export const JumboBg = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: ${props => `${theme.colors.gradients.card}, url(${props.background})`};  
-  clip-path: circle(200vh at 50% -100vh);
+  background: ${props => props.type === "game" ? 
+    `${theme.colors.gradients.gameHeader}, url(${props.background})` 
+    : `${theme.colors.gradients.card}, url(${props.background})`};
+  clip-path: ${props => props.type !== 'game' ? `circle(200vh at 50% -100vh)` : 'none'};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-
-  @media ${theme.device.mobileL} {
-    clip-path: circle(200vh at 50% -100vh);
-  }
 `;
 
 export const Quote = styled.div`
@@ -110,4 +111,13 @@ export const TitleNewGames = styled.div`
   letter-spacing: 5px;
   text-transform: uppercase;
   margin-bottom: 15px;
+`;
+
+export const Divider = styled.div`
+  position: absolute;
+  height: 75px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: ${theme.colors.primary.dark};
 `;

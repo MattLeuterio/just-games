@@ -6,6 +6,7 @@ const CircleProgressBar = ({
   sizeCircle,
   sizeContainer,
   sizeStroke,
+  sizeStrokeTotal,
   widthStroke,
   vote,
   fontSize,
@@ -16,6 +17,7 @@ const CircleProgressBar = ({
         <Circle
           widthStroke={widthStroke}
           sizeStroke={sizeStroke}
+          sizeStrokeTotal={sizeStrokeTotal}
           cx={sizeCircle}
           cy={sizeCircle}
           r={sizeCircle}
@@ -36,7 +38,8 @@ const CircleProgressBar = ({
 
 CircleProgressBar.defaultProps = {
   sizeContainer: 112,
-  sizeStroke: 312,
+  sizeStroke: 305,
+  sizeStrokeTotal: 312,
   sizeCircle: 50,
   fontSize: 45,
   widthStroke: 10,

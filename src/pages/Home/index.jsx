@@ -13,7 +13,6 @@ import {
   getTopRPG,
   getTopShooter,
   getTopSport,
-  selectPopular,
   selectTopAdventure,
   selectTopArcade,
   selectTopIndie,
@@ -47,7 +46,7 @@ const Home = () => {
   return (
     <HomeContainer>
       <HelmetMeta titlePage="Just Games - Home" path="/" />
-      <Jumbotron />
+      <Jumbotron type="home" />
       <CarouselGames title="adventure" list={adventureList} />
       <CarouselGames title="shooter" list={shooterList} />
       <CarouselGames title="indie" list={indieList} />
