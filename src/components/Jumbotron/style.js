@@ -10,13 +10,10 @@ export const JumbotronContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  @media ${theme.device.tablet} {
-    min-height: 700px;
-  }
+
   @media ${theme.device.tabletL} {
     padding-top: 0;
-    margin-bottom: 00px;
+    margin-bottom: ${props => props.type === 'home' ? "280px" : "0"};
     flex-direction: row;
   }
 `;

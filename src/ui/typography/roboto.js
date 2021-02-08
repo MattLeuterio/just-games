@@ -51,6 +51,11 @@ const types = {
     fontSize: 27,
     letterSpacing: '5px'
   },
+  gamePageSectionTitle: {
+    fontSize: 27,
+    fontWeight: 700,
+    color: `${theme.colors.primary.primary}`,
+  },
 }  
 
 

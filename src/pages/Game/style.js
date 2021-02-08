@@ -57,3 +57,89 @@ export const Vote = styled.div`
   padding: 10px;
   border-radius: 50%;
 `;
+
+export const RowInfo = styled.div`
+  width: 100%;
+  margin-top: 80px;
+  
+  @media ${theme.device.tabletL} {
+    display: flex;
+  }
+`;
+
+export const About = styled.div`
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 50px;
+  
+  @media ${theme.device.tabletL} {
+    padding: 0 50px;
+    width: 50%;
+    margin-bottom: 0;
+  }
+`;
+
+
+export const SectionTitle = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 15px 0;
+  
+  > span {
+    margin-right: 10px;
+  }
+  `;
+
+export const Info = styled.div`
+  width: 100%;
+  padding: 0 20px;
+  
+  @media ${theme.device.tabletL} {
+    width: 50%;
+    padding: 0 50px;
+  }
+  `;
+
+export const InfoContainer = styled.div`
+  background: ${theme.colors.primary.dark};
+  width: 100%;
+`;
+
+export const InfoTitle = styled.div`
+  background: ${theme.colors.gradients.primary};
+  padding: 15px 30px;
+  border-radius: 6px 6px 0 0;
+
+  > div {
+    color: ${theme.colors.primary.light};
+  }
+`
+
+export const InfoGame = styled.div`
+  padding: 20px 30px;
+`;
+
+export const InformationRow = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 13px;
+  }
+`;
+
+export const NameInfo = styled.span`
+  font-size: 12px;
+  font-weight: 700;
+  color: ${theme.colors.primary.primary};
+  text-transform: uppercase;
+  margin-right: 15px;
+`;
+
+export const ResultInfo = styled.span`
+  font-weight: bold;
+  
+  > span:not(:last-child)::after,
+    a:not(:last-child)::after{
+    content: ", ";
+  }
+`;
