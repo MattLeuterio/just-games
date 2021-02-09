@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import CardGame from './CardGame';
 import CarouselGames from './CarouselGames';
+import CarouselMedia from './CarouselMedia';
 import Jumbotron from './Jumbotron';
 
 export {
@@ -11,5 +12,6 @@ export {
   Footer,
   CardGame,
   CarouselGames,
+  CarouselMedia,
   Jumbotron
 }

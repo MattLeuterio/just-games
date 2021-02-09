@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const ImageWrapper = styled.div`
-  width: ${ props  => `${props.width}px`};
+  width: ${ props  => `${props.width}`};
   cursor: ${ props => props.onClick ? 'pointer' : 'default'};
 `;
 

@@ -13,7 +13,7 @@ const Footer = ({ mediaIsDesktop }) => {
     <Container>
       <Image
         src={logo}
-        width={mediaIsDesktop ? 321 : 241}
+        width={mediaIsDesktop ? "321px" : "241px"}
         alt="logo Just Games"
       />
       <FooterMenu selector={menuSelected} />

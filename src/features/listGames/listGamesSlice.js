@@ -10,13 +10,13 @@ export const getNew = createAsyncThunk(
   }
 )
 
-export const getPopular = createAsyncThunk(
-  'listGames/getPopular',
-  async () => {
-    return axios.get('https://api.rawg.io/api/games/lists/main', { params: { page_size: '10', ordering: '-relevance'} })
-    .then(res => res.data.results).catch(err => console.error(err));
-  }
-)
+// export const getPopular = createAsyncThunk(
+//   'listGames/getPopular',
+//   async () => {
+//     return axios.get('https://api.rawg.io/api/games/lists/main', { params: { page_size: '10', ordering: '-relevance'} })
+//     .then(res => res.data.results).catch(err => console.error(err));
+//   }
+// )
 
 export const getTopAdventure = createAsyncThunk(
   'listGames/getTopAdventure',
@@ -173,9 +173,9 @@ export const listGamesSlice = createSlice({
     [getNew.fulfilled]: (state, { payload }) => {
       state.listNew = payload
     },
-    [getPopular.fulfilled]: (state, { payload }) => {
-      state.listPopular = payload
-    },
+    // [getPopular.fulfilled]: (state, { payload }) => {
+    //   state.listPopular = payload
+    // },
     [getTopAdventure.fulfilled]: (state, { payload }) => {
       state.listTopAdventure = payload
     },
@@ -205,7 +205,7 @@ export const listGamesSlice = createSlice({
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectListGames = state => state.listGames.games;
 export const selectNew = state => state.listGames.listNew;
-export const selectPopular = state => state.listGames.listPopular;
+// export const selectPopular = state => state.listGames.listPopular;
 export const selectTopAdventure = state => state.listGames.listTopAdventure;
 export const selectTopShooter = state => state.listGames.listTopShooter;
 export const selectTopIndie = state => state.listGames.listTopIndie;

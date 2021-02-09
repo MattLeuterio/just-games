@@ -5,7 +5,6 @@ import { HomeContainer } from "./style";
 import { HelmetMeta } from "../../atoms";
 import { CarouselGames, Jumbotron } from "../../components";
 import {
-  getPopular,
   getTopAdventure,
   getTopArcade,
   getTopIndie,
@@ -33,7 +32,6 @@ const Home = () => {
   const arcadeList = useSelector(selectTopArcade);
 
   useEffect(() => {
-    dispatch(getPopular());
     dispatch(getTopAdventure());
     dispatch(getTopShooter());
     dispatch(getTopIndie());

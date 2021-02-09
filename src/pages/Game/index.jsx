@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import ReactPlayer from "react-player";
 
 import {
   Container,
@@ -21,37 +22,53 @@ import {
   InformationRow,
   NameInfo,
   ResultInfo,
+  Media,
+  MediaHeader,
+  NavMedia,
+  CarouselsContainer,
+  VideoContainer,
 } from "./style";
 import {
   getGame,
+  getGameScreenshots,
   getGameSeries,
   selectGameData,
+  selectGameScreenshots,
   selectGameSeries,
 } from "../../features/game/gameSlice";
 import { CircleProgressBar, HelmetMeta } from "../../atoms";
-import { Jumbotron } from "../../components";
+import { CarouselMedia, Jumbotron } from "../../components";
 import Background from "../../ui/assets/img/search-page-bg.png";
-import { DocumentTextOutline as AboutIcon } from "react-ionicons";
+import {
+  DocumentTextOutline as AboutIcon,
+  FilmOutline as VideoIcon,
+  ImageOutline as ImageIcon,
+} from "react-ionicons";
 import Roboto from "../../ui/typography/roboto";
 
 const Game = () => {
+  const [selectedNavMedia, setSelectedNavMedia] = useState("images");
+
   const locationString = window.location.pathname.replace("/game/", "");
-  console.log(locationString);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getGame(locationString));
     dispatch(getGameSeries(locationString));
+    dispatch(getGameScreenshots(locationString));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const gameData = useSelector(selectGameData);
   const gameSeries = useSelector(selectGameSeries);
-  console.log(gameSeries);
+  const gameScreenshots = useSelector(selectGameScreenshots);
 
   return (
     <Container>
-      <HelmetMeta titlePage={gameData?.name} path={`/${gameData?.slug}`} />
+      <HelmetMeta
+        titlePage={`${gameData?.name} | Just Games`}
+        path={`/${gameData?.slug}`}
+      />
       <Jumbotron
         type="game"
         background={
@@ -134,6 +151,20 @@ const Game = () => {
                     </ResultInfo>
                   </InformationRow>
                 )}
+              {gameData?.website && (
+                <InformationRow>
+                  <NameInfo>Website</NameInfo>
+                  <ResultInfo>
+                    <a
+                      href={gameData?.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Official Website
+                    </a>
+                  </ResultInfo>
+                </InformationRow>
+              )}
               {gameData?.esrb_rating && (
                 <InformationRow>
                   <NameInfo>ESRB Ratings</NameInfo>
@@ -166,6 +197,42 @@ const Game = () => {
           </InfoContainer>
         </Info>
       </RowInfo>
+      {gameScreenshots !== null && gameScreenshots?.length > 0 && (
+        <Media>
+          <MediaHeader>
+            <Roboto type="gamePageSectionTitle">Media</Roboto>
+            <NavMedia
+              selected={selectedNavMedia === "images"}
+              onClick={() => setSelectedNavMedia("images")}
+            >
+              <ImageIcon />
+            </NavMedia>
+            {gameData?.clip !== null && gameData?.clip?.video !== null && (
+              <NavMedia
+                selected={selectedNavMedia === "video"}
+                onClick={() => setSelectedNavMedia("video")}
+              >
+                <VideoIcon />
+              </NavMedia>
+            )}
+          </MediaHeader>
+          <CarouselsContainer>
+            {selectedNavMedia === "images" ? (
+              <CarouselMedia listScreenshots={gameScreenshots} />
+            ) : (
+              <VideoContainer>
+                <ReactPlayer
+                  url={`https://www.youtube.com/watch?v=${gameData?.clip?.video}`}
+                  width="100%"
+                  height="100%"
+                  controls
+                />
+              </VideoContainer>
+            )}
+          </CarouselsContainer>
+        </Media>
+      )}
+
       {gameData.game_series_count > 0 &&
         gameSeries?.map((res) => (
           <NavLink key={res.slug} exact to={`${res.slug}`}>

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { render } from "react-dom";
+import React from "react";
 
 // Import react-circular-progressbar module and styles
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";

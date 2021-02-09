@@ -39,7 +39,7 @@ const Header = ({ mediaIsDesktop }) => {
         </MobileMenu>
       )}
       <Container scroll={scrollPosition}>
-        <Image src={logo} width={162} alt="logo Just Games" />
+        <Image src={logo} width="162px" alt="logo Just Games" />
         {mediaIsDesktop && <HeaderMenu />}
         <ActionContainer>
           <SearchIcon color={"#eceaef"} width="35px" height="35px" />

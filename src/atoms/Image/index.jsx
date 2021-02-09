@@ -11,12 +11,12 @@ const Image = ({ src, onClick, width, alt }) => {
 };
 
 Image.defaultProps = {
-  width: 100,
+  width: "100px",
 };
 
 Image.propTypes = {
   onClick: PropTypes.func,
-  width: PropTypes.number,
+  width: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
 };

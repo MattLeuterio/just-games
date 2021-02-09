@@ -105,6 +105,7 @@ export const Info = styled.div`
 export const InfoContainer = styled.div`
   background: ${theme.colors.primary.dark};
   width: 100%;
+  border-radius: 6px;
 `;
 
 export const InfoTitle = styled.div`
@@ -142,4 +143,68 @@ export const ResultInfo = styled.span`
     a:not(:last-child)::after{
     content: ", ";
   }
+
+  a:hover {
+    color: ${theme.colors.primary.primary};
+  }
+`;
+
+export const Media = styled.div`
+  width: 100%;
+  height: 600px;
+  padding-bottom: 1px;
+  background: ${theme.colors.primary.dark};
+  margin: 100px 0;
+`;
+
+export const MediaHeader = styled.div`
+  width: 100%;
+  height: 55px;
+  background: ${theme.colors.gradients.primary};
+  border-radius: 0 0 6px 6px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  justify-content: center;
+
+  @media ${theme.device.tabletL} {
+    padding: 0 100px;
+    justify-content: flex-start;
+  }
+
+  > div:first-child {
+    color: ${theme.colors.primary.light};
+    width: fit-content;
+    margin-right: 30px;
+  }
+`;
+
+export const NavMedia = styled.div`
+  width: 80px;
+  height: 100%;
+  padding: 5px;
+  cursor: pointer;
+  background: ${props => props.selected ?
+    `${theme.colors.primary.secondary}` :
+    'transparent'
+  };
+
+  > span > svg {
+    color: ${theme.colors.primary.light};
+    width: 100%;
+    height: 100%
+  }
+`;
+
+export const CarouselsContainer = styled.div`
+  width: 100%;
+  height: calc(100% - 55px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const VideoContainer = styled.div`
+  width: 80%;
+  height: 95%;
 `;
