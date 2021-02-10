@@ -58,7 +58,7 @@ export const Vote = styled.div`
   border-radius: 50%;
 `;
 
-export const RowInfo = styled.div`
+export const Row = styled.div`
   width: 100%;
   margin-top: 80px;
   
@@ -207,4 +207,61 @@ export const CarouselsContainer = styled.div`
 export const VideoContainer = styled.div`
   width: 80%;
   height: 95%;
+`;
+
+export const Stores = styled.div`
+  width: 100%;
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 50px;
+  
+  @media ${theme.device.tabletL} {
+    padding: 0 50px;
+    width: 50%;
+    margin-bottom: 0;
+  }
+
+  > div > span > svg {
+    color: ${theme.colors.primary.primary};
+    width: 32px;
+    height: 32px;
+  }
+`
+export const StoresList = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+export const LinkStore = styled.a`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border: 1px solid ${theme.colors.primary.light};
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: 10px;
+  transition: all .2s;
+
+  &:hover {
+    background-color: ${theme.colors.primary.primary};
+    transform: scale(1.08);
+  }
+  
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+
+  > span > svg {
+    fill: ${theme.colors.primary.light};
+  }
+
+  > span,
+  > div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right:  8px;
+  }
 `;

@@ -20,7 +20,7 @@ const CarouselMedia = ({ title = "Title", listScreenshots }) => {
 
   const settings = {
     pagination: false,
-    itemPadding: [0, 30, 0, 30],
+    itemPadding: [0, 10, 0, 10],
     breakPoints: [
       { width: 1, itemsToShow: 1 },
       { width: 550, itemsToShow: 1 },

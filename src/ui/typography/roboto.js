@@ -56,6 +56,9 @@ const types = {
     fontWeight: 700,
     color: `${theme.colors.primary.primary}`,
   },
+  gamePageStoreLabel: {
+    fontSize: 14,
+  },
 }  
 
 

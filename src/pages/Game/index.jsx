@@ -12,7 +12,7 @@ import {
   GameName,
   GameDevs,
   Vote,
-  RowInfo,
+  Row,
   About,
   Info,
   SectionTitle,
@@ -27,6 +27,9 @@ import {
   NavMedia,
   CarouselsContainer,
   VideoContainer,
+  Stores,
+  StoresList,
+  LinkStore,
 } from "./style";
 import {
   getGame,
@@ -38,13 +41,15 @@ import {
 } from "../../features/game/gameSlice";
 import { CircleProgressBar, HelmetMeta } from "../../atoms";
 import { CarouselMedia, Jumbotron } from "../../components";
+import Roboto from "../../ui/typography/roboto";
 import Background from "../../ui/assets/img/search-page-bg.png";
 import {
   DocumentTextOutline as AboutIcon,
   FilmOutline as VideoIcon,
   ImageOutline as ImageIcon,
+  StorefrontOutline as StoresIcon,
 } from "react-ionicons";
-import Roboto from "../../ui/typography/roboto";
+import { storesSwitch } from "../../utils";
 
 const Game = () => {
   const [selectedNavMedia, setSelectedNavMedia] = useState("images");
@@ -54,14 +59,14 @@ const Game = () => {
 
   useEffect(() => {
     dispatch(getGame(locationString));
-    dispatch(getGameSeries(locationString));
     dispatch(getGameScreenshots(locationString));
+    dispatch(getGameSeries(locationString));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch]);
 
   const gameData = useSelector(selectGameData);
-  const gameSeries = useSelector(selectGameSeries);
   const gameScreenshots = useSelector(selectGameScreenshots);
+  const gameSeries = useSelector(selectGameSeries);
 
   return (
     <Container>
@@ -99,7 +104,7 @@ const Game = () => {
           )}
         </GameHeader>
       </Jumbotron>
-      <RowInfo>
+      <Row>
         <About>
           <SectionTitle>
             <AboutIcon color={"#8E2DE0"} width="32px" height="32px" />
@@ -196,7 +201,7 @@ const Game = () => {
             </InfoGame>
           </InfoContainer>
         </Info>
-      </RowInfo>
+      </Row>
       {gameScreenshots !== null && gameScreenshots?.length > 0 && (
         <Media>
           <MediaHeader>
@@ -231,6 +236,34 @@ const Game = () => {
             )}
           </CarouselsContainer>
         </Media>
+      )}
+      {gameData?.stores !== null && gameData?.stores?.length > 0 && (
+        <Row>
+          <Stores>
+            <SectionTitle>
+              <StoresIcon />
+              <Roboto type="gamePageSectionTitle">Stores</Roboto>
+            </SectionTitle>
+            <StoresList>
+              {gameData?.stores.map((store) => (
+                <LinkStore
+                  href={
+                    store?.url
+                      ? `${store?.url}`
+                      : `https://www.${store?.store?.domain}`
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {storesSwitch(`${store?.store?.slug}`)}
+                  <Roboto type="gamePageStoreLabel">
+                    {store?.store?.name}
+                  </Roboto>
+                </LinkStore>
+              ))}
+            </StoresList>
+          </Stores>
+        </Row>
       )}
 
       {gameData.game_series_count > 0 &&
