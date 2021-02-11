@@ -35,6 +35,13 @@ export const GameDevs = styled.div`
 export const Genres = styled.div`
   display: flex;
   margin-top: 30px;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media ${theme.device.tabletL} {
+    width: 50%;
+  }
 `;
 
 export const GenrePill = styled.div`
@@ -42,10 +49,12 @@ export const GenrePill = styled.div`
   border: 1px solid ${theme.colors.primary.light};
   border-radius: 100px;
   padding: 9px 15px;
+  margin-bottom: 10px;
 
   &:not(:last-child) {
     margin-right: 10px;
   }
+
 `;
 
 export const Vote = styled.div`
