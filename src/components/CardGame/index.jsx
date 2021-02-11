@@ -13,26 +13,23 @@ const CardGame = ({
   cover,
   vote,
   highlight,
+  width = "100%",
+  height = "100%",
 }) => {
   return (
-    <NavLink key={path} exact to={`game/${path}`}>
-      <CardContainer cover={cover} highlight={highlight}>
+    <NavLink key={path} exact to={path}>
+      <CardContainer
+        width={width}
+        height={height}
+        cover={cover}
+        highlight={highlight}
+      >
         <Top>
           <Title>{title}</Title>
           <Category>{category}</Category>
         </Top>
         <Bottom>
-          {vote > 0 && (
-            <CircleProgressBar
-              sizeContainer={80}
-              fontSize={25}
-              widthStroke={7}
-              sizeStroke={212}
-              sizeStrokeTotal={218}
-              sizeCircle={35}
-              vote={vote}
-            />
-          )}
+          {vote > 0 && <CircleProgressBar sizeContainer={80} vote={vote} />}
           <Platform>{platform}</Platform>
         </Bottom>
       </CardContainer>
@@ -45,6 +42,8 @@ CardGame.propTypes = {
   title: PropTypes.string,
   category: PropTypes.string,
   platform: PropTypes.string,
+  width: PropTypes.string,
+  height: PropTypes.string,
   cover: PropTypes.string,
   vote: PropTypes.number,
   highlight: PropTypes.bool,

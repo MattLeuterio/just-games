@@ -3,8 +3,8 @@ import theme from '../../ui/theme';
 
 export const CardContainer = styled.div`
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: ${props => props.width};
+  height: ${props => props.height};
   padding: 25px 20px;
   border-radius: 6px;
   display: flex;

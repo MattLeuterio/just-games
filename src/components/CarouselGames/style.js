@@ -6,6 +6,8 @@ export const SliderRow = styled.div`
   margin: ${props => !props.load ? '50px 0px' : '50px 1px'};
 
   .rec-carousel-wrapper {
+    justify-content: flex-start;
+    
     & > div {
       &:hover {
         button {
@@ -24,13 +26,13 @@ export const SliderRow = styled.div`
     } 
   }
   .rec.rec-arrow {
-      border-radius: 0;
-      position: absolute;
-      z-index: 1;
-      background: rgba(0, 0, 0, .2);
-      height: 80%;
-      box-shadow: none;
-      opacity: 0;
+    border-radius: 0;
+    position: absolute;
+    z-index: 1;
+    background: transparent;
+    height: 80%;
+    box-shadow: none;
+    opacity: 0;
   }
 
   .rec.rec-arrow:hover {

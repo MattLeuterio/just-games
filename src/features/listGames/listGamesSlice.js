@@ -10,13 +10,14 @@ export const getNew = createAsyncThunk(
   }
 )
 
-// export const getPopular = createAsyncThunk(
-//   'listGames/getPopular',
-//   async () => {
-//     return axios.get('https://api.rawg.io/api/games/lists/main', { params: { page_size: '10', ordering: '-relevance'} })
-//     .then(res => res.data.results).catch(err => console.error(err));
-//   }
-// )
+export const getGameByGenre = createAsyncThunk(
+  'listGames/getGameByGenre',
+  async (params) => {
+    console.log('chiamata', params.slug, params.page)
+    return axios.get(`https://api.rawg.io/api/games`, { params: {genres: params.slug, page: params.page, page_size: '40'} })
+    .then(res => res.data).catch(err => console.error(err));
+  }
+)
 
 export const getTopAdventure = createAsyncThunk(
   'listGames/getTopAdventure',
@@ -160,7 +161,7 @@ export const listGamesSlice = createSlice({
       },
     ],
     listNew: [],
-    listPopular: [],
+    listGamesByGenre: [],
     listTopAdventure: [],
     listTopShooter: [],
     listTopIndie: [],
@@ -173,9 +174,9 @@ export const listGamesSlice = createSlice({
     [getNew.fulfilled]: (state, { payload }) => {
       state.listNew = payload
     },
-    // [getPopular.fulfilled]: (state, { payload }) => {
-    //   state.listPopular = payload
-    // },
+    [getGameByGenre.fulfilled]: (state, { payload }) => {
+      state.listGamesByGenre = payload
+    },
     [getTopAdventure.fulfilled]: (state, { payload }) => {
       state.listTopAdventure = payload
     },
@@ -205,7 +206,7 @@ export const listGamesSlice = createSlice({
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectListGames = state => state.listGames.games;
 export const selectNew = state => state.listGames.listNew;
-// export const selectPopular = state => state.listGames.listPopular;
+export const selectGamesByGenre = state => state.listGames.listGamesByGenre;
 export const selectTopAdventure = state => state.listGames.listTopAdventure;
 export const selectTopShooter = state => state.listGames.listTopShooter;
 export const selectTopIndie = state => state.listGames.listTopIndie;

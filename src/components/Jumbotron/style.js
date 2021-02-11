@@ -5,7 +5,7 @@ export const JumbotronContainer = styled.div`
   padding-top: ${props => props.type === 'home' ? "180px" : "0"};
   margin-bottom: ${props => props.type === 'home' ? "480px" : "0"};
   position: relative;
-  height: ${props => props.type === 'home' ? `100vh` : `600px`};
+  height: ${props => props.type !== 'home' && props.type !== 'genre' ? `600px` : `100vh`};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,7 +13,7 @@ export const JumbotronContainer = styled.div`
 
   @media ${theme.device.tabletL} {
     padding-top: 0;
-    margin-bottom: ${props => props.type === 'home' ? "280px" : "0"};
+    margin-bottom: ${props => props.type !== 'home' ? props.type !== 'genre' ?  "0" : "100px" : "280px"};
     flex-direction: row;
   }
 `;
@@ -27,7 +27,7 @@ export const JumboBg = styled.div`
   background: ${props => props.type === "game" ? 
     `${theme.colors.gradients.gameHeader}, url(${props.background})` 
     : `${theme.colors.gradients.card}, url(${props.background})`};
-  clip-path: ${props => props.type !== 'game' ? `circle(200vh at 50% -100vh)` : 'none'};
+  clip-path: ${props => props.type !== 'game'? `circle(200vh at 50% -100vh)` : 'none'};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

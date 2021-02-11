@@ -45,13 +45,13 @@ const Home = () => {
     <HomeContainer>
       <HelmetMeta titlePage="Just Games - Home" path="/" />
       <Jumbotron type="home" />
-      <CarouselGames title="adventure" list={adventureList} />
-      <CarouselGames title="shooter" list={shooterList} />
-      <CarouselGames title="indie" list={indieList} />
-      <CarouselGames title="rpg" list={rpgList} />
-      <CarouselGames title="moba" list={mobaList} />
-      <CarouselGames title="sport" list={sportList} />
-      <CarouselGames title="arcade" list={arcadeList} />
+      <CarouselGames title="adventure" basePath="game" list={adventureList} />
+      <CarouselGames title="shooter" basePath="game" list={shooterList} />
+      <CarouselGames title="indie" basePath="game" list={indieList} />
+      <CarouselGames title="rpg" basePath="game" list={rpgList} />
+      <CarouselGames title="moba" basePath="game" list={mobaList} />
+      <CarouselGames title="sport" basePath="game" list={sportList} />
+      <CarouselGames title="arcade" basePath="game" list={arcadeList} />
     </HomeContainer>
   );
 };

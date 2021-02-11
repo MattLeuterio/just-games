@@ -67,7 +67,7 @@ export const Row = styled.div`
   }
 `;
 
-export const About = styled.div`
+export const SectionContainer = styled.div`
   width: 100%;
   padding: 0 20px;
   margin-bottom: 50px;
@@ -76,6 +76,13 @@ export const About = styled.div`
     padding: 0 50px;
     width: 50%;
     margin-bottom: 0;
+  }
+
+  > div > span > svg {
+    fill: ${theme.colors.primary.primary};
+    color: ${theme.colors.primary.primary};
+    width: 32px;
+    height: 32px;
   }
 `;
 
@@ -89,16 +96,6 @@ export const SectionTitle = styled.div`
   
   > span {
     margin-right: 10px;
-  }
-  `;
-
-export const Info = styled.div`
-  width: 100%;
-  padding: 0 20px;
-  
-  @media ${theme.device.tabletL} {
-    width: 50%;
-    padding: 0 50px;
   }
   `;
 
@@ -209,24 +206,6 @@ export const VideoContainer = styled.div`
   height: 95%;
 `;
 
-export const Stores = styled.div`
-  width: 100%;
-  width: 100%;
-  padding: 0 20px;
-  margin-bottom: 50px;
-  
-  @media ${theme.device.tabletL} {
-    padding: 0 50px;
-    width: 50%;
-    margin-bottom: 0;
-  }
-
-  > div > span > svg {
-    color: ${theme.colors.primary.primary};
-    width: 32px;
-    height: 32px;
-  }
-`
 export const StoresList = styled.div`
   width: 100%;
   display: flex;
@@ -263,5 +242,33 @@ export const LinkStore = styled.a`
     justify-content: center;
     align-items: center;
     margin-right:  8px;
+  }
+`;
+
+export const ShareButtons = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+
+  > button {
+    margin: 0 10px 10px 0;
+  }
+`;
+
+export const Series = styled.div`
+  width: 100%;
+  padding: 0 20px;
+  margin: 50px 0;
+  
+  @media ${theme.device.tabletL} {
+    padding: 0 50px;
+    margin-bottom: 0;
+  }
+
+  > div > span > svg {
+    color: ${theme.colors.primary.primary};
+    fill: ${theme.colors.primary.primary};
+    width: 32px;
+    height: 32px;
   }
 `;

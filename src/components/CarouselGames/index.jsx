@@ -6,7 +6,7 @@ import { BadgeTop, CarouselItem, SliderRow, Title } from "./style";
 import Roboto from "../../ui/typography/roboto";
 import { CardGame } from "..";
 
-const CarouselGames = ({ title = "Title", list }) => {
+const CarouselGames = ({ title, list, basePath }) => {
   const [games, setGames] = useState([]);
   const [load, setLoad] = useState(false);
 
@@ -22,6 +22,7 @@ const CarouselGames = ({ title = "Title", list }) => {
   const settings = {
     pagination: false,
     itemPadding: [0, 5, 0, 5],
+    showEmptySlots: true,
     breakPoints: [
       { width: 1, itemsToShow: 1 },
       { width: 550, itemsToShow: 2 },
@@ -33,22 +34,24 @@ const CarouselGames = ({ title = "Title", list }) => {
 
   return (
     <SliderRow load={load}>
-      <Title>
-        {title.toLowerCase() !== "popular" && <BadgeTop>top 10</BadgeTop>}
-        <Roboto type="carouselTitle">{title}</Roboto>
-      </Title>
+      {title !== undefined && (
+        <Title>
+          {title?.toLowerCase() !== "popular" && <BadgeTop>top 10</BadgeTop>}
+          <Roboto type="carouselTitle">{title}</Roboto>
+        </Title>
+      )}
       {!!games && (
         <Carousel {...settings}>
           {games?.map((game) => (
-            <CarouselItem key={game.slug}>
+            <CarouselItem key={game?.slug} color>
               <CardGame
-                key={game.slug}
-                path={game.slug}
-                title={game.name}
-                category={game.category}
-                vote={game.metacritic}
-                platform={game.platforms[0].platform.name}
-                cover={game.background_image}
+                key={game?.slug}
+                path={basePath ? `${basePath}/${game?.slug}` : `${game?.slug}`}
+                title={game?.name}
+                category={game?.category}
+                vote={game?.metacritic}
+                platform={game?.platforms[0]?.platform?.name}
+                cover={game?.background_image}
               />
             </CarouselItem>
           ))}

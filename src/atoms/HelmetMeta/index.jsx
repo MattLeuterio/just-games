@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
 
-const HelmetMeta = ({ titlePage, path }) => {
+const HelmetMeta = ({ titlePage, path, description }) => {
   return (
     /**
      * TODO:
@@ -14,6 +14,7 @@ const HelmetMeta = ({ titlePage, path }) => {
       <meta charSet="utf-8" />
       <title>{titlePage}</title>
       <link rel="canonical" href={`http://justgames.com${path}`} />
+      <meta name="description" content={description} />
     </Helmet>
   );
 };

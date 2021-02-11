@@ -1,4 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  bgGenreAdventure,
+  bgGenreSports,
+  bgGenreShooter,
+  bgGenreIndie,
+  bgGenreMoba,
+  bgGenreRpg,
+  bgGenreArcade
+} from '../../ui/assets/img/bg-genre';
 
 export const menuElementsSlice = createSlice({
   name: 'menuElements',
@@ -11,30 +20,37 @@ export const menuElementsSlice = createSlice({
       {
         title: "Adventure",
         path: "/adventure",
+        background: bgGenreAdventure
       },
       {
         title: "Shooter",
         path: "/shooter",
+        background: bgGenreShooter
       },
       {
         title: "Sport",
-        path: "/sport",
+        path: "/sports",
+        background: bgGenreSports
       },
       {
         title: "Indie",
         path: "/indie",
+        background: bgGenreIndie
       },
       {
         title: "RPG",
-        path: "/rpg",
+        path: "/role-playing-games-rpg",
+        background: bgGenreRpg
       },
       {
         title: "MOBA",
-        path: "/moba",
+        path: "/massively-multiplayer",
+        background: bgGenreMoba
       },
       {
         title: "Arcade",
         path: "/arcade",
+        background: bgGenreArcade
       },
     ],
     footer: [
