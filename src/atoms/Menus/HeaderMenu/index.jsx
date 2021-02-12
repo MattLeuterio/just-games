@@ -10,7 +10,7 @@ const HeaderMenu = () => {
   const menuElements = useSelector(selectMenuMain);
   return (
     <MenuElements>
-      {menuElements.map((menuElm) => (
+      {menuElements.slice(0, 8).map((menuElm) => (
         <NavLink
           key={menuElm.path}
           exact

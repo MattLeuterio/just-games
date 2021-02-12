@@ -18,6 +18,7 @@ export const GameTitle = styled.div`
   text-align: center;
 `;
 
+
 export const GameName = styled.h1`
   font-size: 30px;
   font-weight: 700;
@@ -39,6 +40,17 @@ export const Genres = styled.div`
   flex-wrap: wrap;
   justify-content: center;
 
+  > a {
+
+    &:hover {
+
+    }
+
+    &:not(:last-child) {
+    margin-right: 10px;
+  }
+  }
+
   @media ${theme.device.tabletL} {
     width: 50%;
   }
@@ -51,10 +63,9 @@ export const GenrePill = styled.div`
   padding: 9px 15px;
   margin-bottom: 10px;
 
-  &:not(:last-child) {
-    margin-right: 10px;
+  &:hover {
+    background-color: ${theme.colors.primary.primary};
   }
-
 `;
 
 export const Vote = styled.div`

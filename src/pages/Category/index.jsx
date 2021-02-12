@@ -18,7 +18,7 @@ import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
 
 const Category = () => {
   const [page, setPage] = useState(1);
-  const locationString = window.location.pathname.replace("/", "");
+  const locationString = window.location.pathname.replace("/genre/", "");
   const dispatch = useDispatch();
 
   useEffect(() => {

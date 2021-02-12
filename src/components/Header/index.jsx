@@ -25,7 +25,7 @@ const Header = ({ mediaIsDesktop }) => {
     <>
       {!mediaIsDesktop && (
         <MobileMenu open={mobileMenuVisibility}>
-          {menuElements.map((menuElm) => (
+          {menuElements.slice(0, 8).map((menuElm) => (
             <NavLink
               key={menuElm.path}
               onClick={() => setMobileMenuVisibility(!mobileMenuVisibility)}

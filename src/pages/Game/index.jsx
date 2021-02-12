@@ -67,6 +67,7 @@ import {
   TelegramIcon,
   WhatsappIcon,
 } from "react-share";
+import { Link, NavLink } from "react-router-dom";
 
 const Game = () => {
   const [selectedNavMedia, setSelectedNavMedia] = useState("images");
@@ -84,6 +85,8 @@ const Game = () => {
   const gameData = useSelector(selectGameData);
   const gameScreenshots = useSelector(selectGameScreenshots);
   const gameSeries = useSelector(selectGameSeries);
+
+  console.log(window.location);
 
   return (
     <>
@@ -111,7 +114,14 @@ const Game = () => {
             </GameTitle>
             <Genres>
               {gameData?.genres?.map((genre) => (
-                <GenrePill key={genre.id}>{genre.name}</GenrePill>
+                <Link
+                  key={genre?.id}
+                  to={{
+                    pathname: `/genre/${genre?.slug}`,
+                  }}
+                >
+                  <GenrePill>{genre?.name}</GenrePill>
+                </Link>
               ))}
             </Genres>
             {gameData?.metacritic > 0 && (
@@ -214,7 +224,14 @@ const Game = () => {
                     <NameInfo>Genres</NameInfo>
                     <ResultInfo>
                       {gameData?.genres?.map((res) => (
-                        <span key={res.id}>{res.name}</span>
+                        <Link
+                          key={res?.id}
+                          to={{
+                            pathname: `/genre/${res?.slug}`,
+                          }}
+                        >
+                          {res.name}
+                        </Link>
                       ))}
                     </ResultInfo>
                   </InformationRow>
