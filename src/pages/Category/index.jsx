@@ -15,6 +15,7 @@ import {
 import { CardGame, Jumbotron } from "../../components";
 import { selectMenuMain } from "../../features/menuElements/menuElementsSlice";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
+import Roboto from "../../ui/typography/roboto";
 
 const Category = () => {
   const [page, setPage] = useState(1);
@@ -44,6 +45,7 @@ const Category = () => {
       <Jumbotron type="genre" background={genrePage.background}>
         <TitlePage>
           {genrePage.title} <span>games</span>
+          <Roboto type="h2">Page {page}</Roboto>
         </TitlePage>
       </Jumbotron>
       <Results>
