@@ -54,7 +54,7 @@ const Category = () => {
             title={game?.name}
             category={game?.category}
             vote={game?.metacritic}
-            platform={game?.platforms[0]?.platform?.name}
+            platform={game.parent_platforms}
             cover={game?.background_image}
             width="250px"
             height="320px"

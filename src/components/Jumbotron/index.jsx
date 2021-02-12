@@ -45,11 +45,11 @@ const Jumbotron = ({ type, background = BackgroundHome, children }) => {
             {listNewGame.map((game) => (
               <CardGame
                 key={game.slug}
-                path={game.slug}
+                path={`game/${game.slug}`}
                 title={game.name}
                 category={game.category}
                 vote={game.metacritic}
-                platform={game.platforms[0].platform.name}
+                platform={game.parent_platforms}
                 cover={game.background_image}
                 highlight
               />

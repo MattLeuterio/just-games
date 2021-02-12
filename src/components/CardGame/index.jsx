@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 import { CircleProgressBar } from "../../atoms";
 import { CardContainer, Top, Bottom, Title, Category, Platform } from "./style";
+import { platformSwitch } from "../../utils";
 
 const CardGame = ({
   path,
@@ -16,6 +17,14 @@ const CardGame = ({
   width = "100%",
   height = "100%",
 }) => {
+  const platformType = (plat) => {
+    if (typeof plat === "object") {
+      return plat.slice(0, 3).map((plat) => platformSwitch(plat.platform.slug));
+    } else {
+      return platformSwitch(plat);
+    }
+  };
+
   return (
     <NavLink key={path} exact to={path}>
       <CardContainer
@@ -30,7 +39,7 @@ const CardGame = ({
         </Top>
         <Bottom>
           {vote > 0 && <CircleProgressBar sizeContainer={80} vote={vote} />}
-          <Platform>{platform}</Platform>
+          <Platform>{platformType(platform)}</Platform>
         </Bottom>
       </CardContainer>
     </NavLink>
@@ -41,7 +50,7 @@ CardGame.propTypes = {
   path: PropTypes.string,
   title: PropTypes.string,
   category: PropTypes.string,
-  platform: PropTypes.string,
+  platform: PropTypes.array,
   width: PropTypes.string,
   height: PropTypes.string,
   cover: PropTypes.string,

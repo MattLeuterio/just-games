@@ -36,6 +36,7 @@ export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 80px;
 `;
 
 export const Title = styled.div`
@@ -53,4 +54,16 @@ export const Platform = styled.div`
   font-weight: 700;
   text-align: right;
   text-transform: uppercase;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  > span:not(:last-child) {
+    margin-right: 4px;
+  }
+
+  > span > svg {
+    fill: ${theme.colors.primary.light};
+    color: ${theme.colors.primary.light};
+  }
 `;

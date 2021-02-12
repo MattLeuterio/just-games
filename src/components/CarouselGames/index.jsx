@@ -50,7 +50,7 @@ const CarouselGames = ({ title, list, basePath }) => {
                 title={game?.name}
                 category={game?.category}
                 vote={game?.metacritic}
-                platform={game?.platforms[0]?.platform?.name}
+                platform={game?.parent_platforms}
                 cover={game?.background_image}
               />
             </CarouselItem>
