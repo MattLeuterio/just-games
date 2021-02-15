@@ -15,6 +15,7 @@ export const TitlePage = styled.div`
   span {
     font-weight: 300;
     display: block;
+    word-break: break-word;
 
     @media ${theme.device.tabletL} {
       display: inline;

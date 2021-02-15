@@ -41,6 +41,7 @@ const SearchModal = ({ open }) => {
           value={valueSearch}
           onChange={(e) => handleOnChange(e.target.value)}
           onKeyPress={(e) => handleOnMouseEnter(e)}
+          maxlength="10"
         />
         <SearchIcon
           onClick={(e) => handleOnClickSearchIcon(e)}

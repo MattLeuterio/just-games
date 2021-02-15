@@ -42,7 +42,11 @@ const SearchResults = () => {
       <Jumbotron
         type="genre"
         background={
-          results?.count > 0 ? results?.results[0].background_image : Background
+          results?.count > 0
+            ? results?.results[0].background_image !== null
+              ? results?.results[0].background_image
+              : Background
+            : Background
         }
       >
         <TitlePage>
@@ -51,34 +55,40 @@ const SearchResults = () => {
           <Roboto type="h2">Page {page}</Roboto>
         </TitlePage>
       </Jumbotron>
-      <Results>
-        {results?.results?.map((game) => (
-          <CardGame
-            key={game?.slug}
-            path={`/game/${game?.slug}`}
-            title={game?.name}
-            category={game?.category}
-            vote={game?.metacritic}
-            platform={game.parent_platforms}
-            cover={game?.background_image}
-            width="320px"
-            height="200px"
-            clipHover={game?.clip?.clip !== undefined ? game?.clip.clip : ""}
-          />
-        ))}
-      </Results>
-      <Pagination>
-        <ButtonPagination
-          type="button"
-          onClick={() => handleOnClickPageButton("prev")}
-          disabled={page === 1}
-        >
-          <ChevronBackOutline />
-        </ButtonPagination>
-        <ButtonPagination onClick={() => handleOnClickPageButton("next")}>
-          <ChevronForwardOutline />
-        </ButtonPagination>
-      </Pagination>
+      {results?.count > 0 && (
+        <>
+          <Results>
+            {results?.results?.map((game) => (
+              <CardGame
+                key={game?.slug}
+                path={`/game/${game?.slug}`}
+                title={game?.name}
+                category={game?.category}
+                vote={game?.metacritic}
+                platform={game.parent_platforms}
+                cover={game?.background_image}
+                width="320px"
+                height="200px"
+                clipHover={
+                  game?.clip?.clip !== undefined ? game?.clip.clip : ""
+                }
+              />
+            ))}
+          </Results>
+          <Pagination>
+            <ButtonPagination
+              type="button"
+              onClick={() => handleOnClickPageButton("prev")}
+              disabled={page === 1}
+            >
+              <ChevronBackOutline />
+            </ButtonPagination>
+            <ButtonPagination onClick={() => handleOnClickPageButton("next")}>
+              <ChevronForwardOutline />
+            </ButtonPagination>
+          </Pagination>
+        </>
+      )}
     </Container>
   );
 };
