@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
+import ReactPlayer from "react-player";
 
 import { CircleProgressBar } from "../../atoms";
-import { CardContainer, Top, Bottom, Title, Category, Platform } from "./style";
+import {
+  CardContainer,
+  Top,
+  Bottom,
+  Title,
+  Category,
+  Platform,
+  Clip,
+} from "./style";
 import { platformSwitch } from "../../utils";
 
 const CardGame = ({
@@ -14,9 +23,12 @@ const CardGame = ({
   cover,
   vote,
   highlight,
+  clipHover,
   width = "100%",
   height = "100%",
 }) => {
+  const [showClip, setShowClip] = useState(false);
+
   const platformType = (plat) => {
     if (typeof plat === "object") {
       return plat.slice(0, 3).map((plat) => platformSwitch(plat.platform.slug));
@@ -26,7 +38,13 @@ const CardGame = ({
   };
 
   return (
-    <NavLink key={path} exact to={path}>
+    <NavLink
+      key={path}
+      exact
+      to={path}
+      onMouseEnter={() => setShowClip(!showClip)}
+      onMouseLeave={() => setShowClip(!showClip)}
+    >
       <CardContainer
         width={width}
         height={height}
@@ -41,6 +59,16 @@ const CardGame = ({
           {vote > 0 && <CircleProgressBar sizeContainer={80} vote={vote} />}
           <Platform>{platformType(platform)}</Platform>
         </Bottom>
+        <Clip show={showClip}>
+          <ReactPlayer
+            url={clipHover}
+            width="400px"
+            height="auto"
+            loop
+            muted
+            playing={showClip}
+          />
+        </Clip>
       </CardContainer>
     </NavLink>
   );

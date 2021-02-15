@@ -14,7 +14,11 @@ export const Container = styled.header`
   z-index: ${theme.zIndex.menus};
   transition: background 750ms;
 
+  > a:first-child > div {
+    cursor: pointer;
+  }
   > div>img {
+
     z-index: ${theme.zIndex.menus};
   }
 
@@ -25,6 +29,10 @@ export const Container = styled.header`
 
 export const ActionContainer = styled.div`
   display: flex;
+
+  > span {
+    cursor: pointer;
+  }
 
   > div {
     margin-left: 20px;

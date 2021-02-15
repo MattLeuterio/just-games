@@ -67,7 +67,7 @@ import {
   TelegramIcon,
   WhatsappIcon,
 } from "react-share";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Game = () => {
   const [selectedNavMedia, setSelectedNavMedia] = useState("images");
@@ -85,8 +85,6 @@ const Game = () => {
   const gameData = useSelector(selectGameData);
   const gameScreenshots = useSelector(selectGameScreenshots);
   const gameSeries = useSelector(selectGameSeries);
-
-  console.log(window.location);
 
   return (
     <>

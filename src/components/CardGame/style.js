@@ -17,6 +17,7 @@ export const CardContainer = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
   transition: all .250s ease-in-out;
 
   &:hover {
@@ -29,6 +30,17 @@ export const CardContainer = styled.div`
     background-size: cover;
   }
   `;
+
+export const Clip = styled.div`
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 6px;
+  display: ${props => props.show ? 'block' : 'none'};
+`;
 
 export const Top = styled.div``;
 

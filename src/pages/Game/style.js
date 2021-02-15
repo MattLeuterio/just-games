@@ -219,6 +219,7 @@ export const CarouselsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 `;
 
 export const VideoContainer = styled.div`

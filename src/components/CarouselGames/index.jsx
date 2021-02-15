@@ -52,6 +52,9 @@ const CarouselGames = ({ title, list, basePath }) => {
                 vote={game?.metacritic}
                 platform={game?.parent_platforms}
                 cover={game?.background_image}
+                clipHover={
+                  game?.clip?.clip !== undefined ? game?.clip.clip : ""
+                }
               />
             </CarouselItem>
           ))}
