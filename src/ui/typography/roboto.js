@@ -48,7 +48,7 @@ const types = {
     fontWeight: 700
   },
   carouselTitle: {
-    fontSize: 27,
+    fontSize: 20,
     letterSpacing: '5px'
   },
   carouselSubtitle: {

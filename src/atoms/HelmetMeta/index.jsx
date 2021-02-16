@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import PropTypes from "prop-types";
-import imageDefault from "../../ui/assets/img/home-bg.jpg";
+import Thumb from "../../ui/assets/img/thumbnail.jpg";
 
 const HelmetMeta = ({ titlePage, path, description, image }) => {
   return (
@@ -12,13 +12,11 @@ const HelmetMeta = ({ titlePage, path, description, image }) => {
       <meta name="description" content={description} />
       <meta property="og:title" content={titlePage} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={image ? image : imageDefault} />
+      <meta property="og:image" content={image ? image : Thumb} />
       <meta property="og:url" content={`http://justgames.com${path}`}></meta>
     </Helmet>
   );
 };
-
-HelmetMeta.defaultProps = {};
 
 HelmetMeta.propTypes = {
   titlePage: PropTypes.string,

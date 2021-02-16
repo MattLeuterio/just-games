@@ -19,6 +19,7 @@ import {
   selectTopShooter,
   selectTopSport,
 } from "../../features/listGames/listGamesSlice";
+import { HelmetMeta } from "../../atoms";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -47,6 +48,11 @@ const Home = () => {
 
   return (
     <HomeContainer>
+      <HelmetMeta
+        titlePage="Just Games | Home"
+        path="www.justgames.com"
+        description="Just Games. Find your next great game."
+      />
       <Jumbotron type="home" />
       <CarouselGames
         title="adventure"

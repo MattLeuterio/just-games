@@ -92,7 +92,7 @@ const Game = () => {
         titlePage={`${gameData?.name} | Just Games`}
         path={`/game/${gameData?.slug}`}
         description={gameData?.description_raw}
-        image="https://static.npmjs.com/338e4905a2684ca96e08c7780fc68412.png"
+        image={`${gameData?.background_image}`}
       />
       <Container>
         <Jumbotron
