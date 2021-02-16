@@ -16,6 +16,7 @@ import {
   selectSearchResults,
 } from "../../features/search/searchSlice";
 import Background from "../../ui/assets/img/search-page-bg.png";
+import { HelmetMeta } from "../../atoms";
 
 const SearchResults = () => {
   const [page, setPage] = useState(1);
@@ -39,6 +40,30 @@ const SearchResults = () => {
 
   return (
     <Container>
+      <HelmetMeta
+        titlePage={`${results?.count} results for ${locationString.replaceAll(
+          "-",
+          " "
+        )} | Just Games`}
+        path={`/search/${locationString}`}
+        description={
+          results?.count > 0
+            ? results?.results[0].description_raw !== null
+              ? `${results?.count} results for ${locationString.replaceAll(
+                  "-",
+                  " "
+                )} | Just Games`
+              : "no results"
+            : Background
+        }
+        image={
+          results?.count > 0
+            ? results?.results[0].background_image !== null
+              ? results?.results[0].background_image
+              : Background
+            : Background
+        }
+      />
       <Jumbotron
         type="genre"
         background={

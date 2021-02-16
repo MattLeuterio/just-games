@@ -16,6 +16,7 @@ import { CardGame, Jumbotron } from "../../components";
 import { selectMenuMain } from "../../features/menuElements/menuElementsSlice";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
 import Roboto from "../../ui/typography/roboto";
+import { HelmetMeta } from "../../atoms";
 
 const Category = () => {
   const [page, setPage] = useState(1);
@@ -40,8 +41,15 @@ const Category = () => {
     window.scrollTo(0, 0);
   };
 
+  console.log(genrePage);
   return (
     <Container>
+      <HelmetMeta
+        titlePage={`${genrePage?.title} Games | Just Games`}
+        path={`${genrePage?.path}`}
+        description={genrePage?.title}
+        image={genrePage?.background}
+      />
       <Jumbotron type="genre" background={genrePage?.background}>
         <TitlePage>
           {genrePage?.title} <span>games</span>
