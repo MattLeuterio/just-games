@@ -13,7 +13,7 @@ import {
   Platform,
   Clip,
 } from "./style";
-import { platformSwitch } from "../../utils";
+import { platformType } from "../../utils";
 
 const CardGame = ({
   path,
@@ -28,14 +28,6 @@ const CardGame = ({
   height = "100%",
 }) => {
   const [showClip, setShowClip] = useState(false);
-
-  const platformType = (plat) => {
-    if (typeof plat === "object") {
-      return plat.slice(0, 3).map((plat) => platformSwitch(plat.platform.slug));
-    } else {
-      return platformSwitch(plat);
-    }
-  };
 
   return (
     <NavLink

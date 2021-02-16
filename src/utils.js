@@ -118,6 +118,15 @@ export const storesSwitch = (store) => {
 };
 
 
+export const platformType = (plat) => {
+  if (typeof plat === "object") {
+    return plat.slice(0, 3).map((plat) => platformSwitch(plat.platform.slug));
+  } else {
+    return platformSwitch(plat);
+  }
+};
+
+
 // Random Int for Home Page's quote
 export const getRandomInt = (min, max) => {
   const minV = Math.ceil(min);

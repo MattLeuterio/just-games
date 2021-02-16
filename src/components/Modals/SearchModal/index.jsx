@@ -1,39 +1,71 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useHistory } from "react-router-dom";
 
 import {
   CloseOutline as CloseIcon,
   Search as SearchIcon,
 } from "react-ionicons";
 import { searchModalToggle } from "../../../features/modals/modalsSlice";
-import { Container, SearchContainer, SearchInput } from "./style";
+import {
+  Container,
+  Game,
+  ImageBox,
+  Platform,
+  SearchContainer,
+  SearchInput,
+  SuggestionGames,
+} from "./style";
+import {
+  getSearchResults,
+  selectSearchResults,
+} from "../../../features/search/searchSlice";
+import { platformType } from "../../../utils";
+import Background from "../../../ui/assets/img/search-page-bg.png";
 
 const SearchModal = ({ open }) => {
   const [valueSearch, setValueSearch] = useState("");
+  const [suggestionBoxVisibility, setSuggestionBoxVisibility] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
 
+  const suggestionGames = useSelector(selectSearchResults);
+
   const handleOnChange = (value) => {
     setValueSearch(value);
+    if (valueSearch.length > 2) {
+      dispatch(getSearchResults({ text: valueSearch, page: 1 }));
+      setSuggestionBoxVisibility(true);
+    }
+    if (valueSearch.length < 2) setSuggestionBoxVisibility(false);
   };
 
   const handleOnMouseEnter = (e) => {
     if (e.key === "Enter" && e.target.value.length > 0) {
-      setValueSearch("");
-      dispatch(searchModalToggle());
       history.push(`/search/${valueSearch.replaceAll(" ", "-").toLowerCase()}`);
+      onClose();
     }
   };
 
   const handleOnClickSearchIcon = (e) => {
-    setValueSearch("");
-    dispatch(searchModalToggle());
     history.push(`/search/${valueSearch.replaceAll(" ", "-")}`);
+    onClose();
   };
+
+  const handleOnClickGame = () => {
+    onClose();
+  };
+
+  const onClose = () => {
+    dispatch(searchModalToggle());
+    setValueSearch("");
+    dispatch(getSearchResults({ text: valueSearch, page: 1 }));
+    setSuggestionBoxVisibility(false);
+  };
+
   return (
     <Container open={open}>
-      <CloseIcon onClick={() => dispatch(searchModalToggle())} />
+      <CloseIcon onClick={() => onClose()} />
       <SearchContainer>
         <SearchInput
           type="text"
@@ -49,6 +81,31 @@ const SearchModal = ({ open }) => {
           width="35px"
           height="35px"
         />
+        {suggestionBoxVisibility && (
+          <SuggestionGames>
+            {suggestionGames?.results?.map((game) => (
+              <Link
+                key={game?.id}
+                to={{
+                  pathname: `/game/${game?.slug}`,
+                }}
+                onClick={() => handleOnClickGame()}
+              >
+                <Game>
+                  <ImageBox
+                    bgResult={
+                      game?.background_image !== null
+                        ? game?.background_image
+                        : Background
+                    }
+                  ></ImageBox>
+                  {game?.name}
+                  <Platform>{platformType(game?.parent_platforms)}</Platform>
+                </Game>
+              </Link>
+            ))}
+          </SuggestionGames>
+        )}
       </SearchContainer>
     </Container>
   );

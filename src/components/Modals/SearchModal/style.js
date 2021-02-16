@@ -29,7 +29,7 @@ export const Container = styled.header`
 export const SearchContainer = styled.div`
   position: absolute;
   width: 90%;
-  top: 50%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
 
@@ -46,14 +46,78 @@ export const SearchInput = styled.input`
   position: relative;
   padding: 10px 7%;
   width: 100%;
-  font-size: 42px;
+  font-size: 22px;
   text-align: center;
   color: ${theme.colors.primary.light};
   background: transparent;
   border: none;
   border-bottom: 1px solid ${theme.colors.primary.light};
 
+  @media ${theme.device.tabletL} {
+    font-size: 56px;
+  }
+
   &:focus {
     outline: 0;
   }
 `;
+
+export const SuggestionGames = styled.div`
+  max-height: calc(100vh - 350px);
+  width: 100%;
+  background: ${theme.colors.primary.dark};
+  position: absolute;
+  top: calc(100% + 20px);
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  > a:not(:last-child) {
+    border-bottom: 1px solid ${theme.colors.primary.light};
+  }
+`;
+
+export const Game = styled.div`
+  padding: 10px;
+  min-height: 50px;
+  display: flex;
+  align-items: center;  
+
+  &:hover {
+    background: ${theme.colors.primary.gray};
+  }
+
+  @media ${theme.device.tabletL} {
+    padding: 10px 25px;
+  }
+`;
+
+export const ImageBox = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-image: ${props => `url(${props.bgResult})`};
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+export const Platform = styled.div`
+  display: flex;
+  margin-left: auto;
+
+  > span {
+    margin-left: 5px;
+
+  }
+
+  > span > svg {
+      color: ${theme.colors.primary.light};
+      fill: ${theme.colors.primary.light};
+  }
+`;
+
