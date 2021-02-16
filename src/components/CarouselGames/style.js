@@ -56,13 +56,22 @@ export const CarouselItem = styled.div`
 
 export const Title = styled.div`
   display: flex;
-  margin-left: 25px;
+  align-items: center;
+  margin: 25px;
   margin-bottom: 20px;
 
   // Title CarouselGames
-  > div:last-child {
+  > div:nth-child(2) {
     max-width: fit-content;
     text-transform: uppercase;
+  }
+
+  > div:last-child {
+    max-width: fit-content;
+    margin-left: auto;
+    background: ${theme.colors.primary.secondary};
+    padding: 5px 10px;
+    border-radius: 100px;
   }
 `;
 

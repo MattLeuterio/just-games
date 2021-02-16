@@ -51,6 +51,11 @@ const types = {
     fontSize: 27,
     letterSpacing: '5px'
   },
+  carouselSubtitle: {
+    fontSize: 12,
+    fontWeight: 700,
+    fontStyle: 'italic',
+  },
   gamePageSectionTitle: {
     fontSize: 27,
     fontWeight: 700,

@@ -6,7 +6,7 @@ import { BadgeTop, CarouselItem, SliderRow, Title } from "./style";
 import Roboto from "../../ui/typography/roboto";
 import { CardGame } from "..";
 
-const CarouselGames = ({ title, list, basePath }) => {
+const CarouselGames = ({ title, subtitle, list, basePath }) => {
   const [games, setGames] = useState([]);
   const [load, setLoad] = useState(false);
 
@@ -38,6 +38,7 @@ const CarouselGames = ({ title, list, basePath }) => {
         <Title>
           {title?.toLowerCase() !== "popular" && <BadgeTop>top 10</BadgeTop>}
           <Roboto type="carouselTitle">{title}</Roboto>
+          <Roboto type="carouselSubtitle">{subtitle}</Roboto>
         </Title>
       )}
       {!!games && (

@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { HomeContainer } from "./style";
-import { HelmetMeta } from "../../atoms";
 import { CarouselGames, Jumbotron } from "../../components";
 import {
   getTopAdventure,
@@ -41,17 +40,56 @@ const Home = () => {
     dispatch(getTopArcade());
   }, [dispatch]);
 
+  // MomentJS
+  const moment = require("moment");
+  const now = moment().format("YYYY");
+  const lastYear = moment().subtract(1, "years").format("YYYY");
+
   return (
     <HomeContainer>
-      <HelmetMeta titlePage="Just Games - Home" path="/" />
       <Jumbotron type="home" />
-      <CarouselGames title="adventure" basePath="game" list={adventureList} />
-      <CarouselGames title="shooter" basePath="game" list={shooterList} />
-      <CarouselGames title="indie" basePath="game" list={indieList} />
-      <CarouselGames title="rpg" basePath="game" list={rpgList} />
-      <CarouselGames title="moba" basePath="game" list={mobaList} />
-      <CarouselGames title="sport" basePath="game" list={sportList} />
-      <CarouselGames title="arcade" basePath="game" list={arcadeList} />
+      <CarouselGames
+        title="adventure"
+        subtitle={`${lastYear}/${now}`}
+        basePath="game"
+        list={adventureList}
+      />
+      <CarouselGames
+        title="shooter"
+        subtitle={`${lastYear}/${now}`}
+        basePath="game"
+        list={shooterList}
+      />
+      <CarouselGames
+        title="indie"
+        subtitle={`${lastYear}/${now}`}
+        basePath="game"
+        list={indieList}
+      />
+      <CarouselGames
+        title="rpg"
+        subtitle={`${lastYear}/${now}`}
+        basePath="game"
+        list={rpgList}
+      />
+      <CarouselGames
+        title="moba"
+        subtitle={`${lastYear}/${now}`}
+        basePath="game"
+        list={mobaList}
+      />
+      <CarouselGames
+        title="sport"
+        subtitle={`${lastYear}/${now}`}
+        basePath="game"
+        list={sportList}
+      />
+      <CarouselGames
+        title="arcade"
+        subtitle={`${lastYear}/${now}`}
+        basePath="game"
+        list={arcadeList}
+      />
     </HomeContainer>
   );
 };

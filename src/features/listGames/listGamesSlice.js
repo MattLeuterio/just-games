@@ -1,6 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+// MomentJS
+const moment = require('moment');
+const now = moment().format("YYYY-MM-DD");
+const lastYear = moment().subtract(1, "years").format("YYYY-MM-DD");
 
 export const getNew = createAsyncThunk(
   'listGames/getNew',
@@ -21,7 +25,7 @@ export const getGameByGenre = createAsyncThunk(
 export const getTopAdventure = createAsyncThunk(
   'listGames/getTopAdventure',
   async () => {
-    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '3'} })
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '3', dates: `${lastYear},${now}`} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -29,7 +33,7 @@ export const getTopAdventure = createAsyncThunk(
 export const getTopShooter = createAsyncThunk(
   'listGames/getTopShooter',
   async () => {
-    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '2'} })
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '2', dates: `${lastYear},${now}`} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -37,7 +41,7 @@ export const getTopShooter = createAsyncThunk(
 export const getTopIndie = createAsyncThunk(
   'listGames/getTopIndie',
   async () => {
-    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '51'} })
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '51', dates: `${lastYear},${now}`} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -45,7 +49,7 @@ export const getTopIndie = createAsyncThunk(
 export const getTopRPG = createAsyncThunk(
   'listGames/getTopRPG',
   async () => {
-    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '5'} })
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '5', dates: `${lastYear},${now}`} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -53,7 +57,7 @@ export const getTopRPG = createAsyncThunk(
 export const getTopMOBA = createAsyncThunk(
   'listGames/getTopMOBA',
   async () => {
-    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '59'} })
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '59', dates: `${lastYear},${now}`} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -61,7 +65,7 @@ export const getTopMOBA = createAsyncThunk(
 export const getTopSport = createAsyncThunk(
   'listGames/getTopSport',
   async () => {
-    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '15'} })
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '15', dates: `${lastYear},${now}`} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -69,7 +73,7 @@ export const getTopSport = createAsyncThunk(
 export const getTopArcade = createAsyncThunk(
   'listGames/getTopArcade',
   async () => {
-    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '11'} })
+    return axios.get('https://api.rawg.io/api/games', { params: { page_size: '10', ordering: '-metacritic', genres: '11', dates: `${lastYear},${now}`} })
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )

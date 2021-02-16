@@ -40,8 +40,6 @@ const Category = () => {
     type === "next" ? setPage(page + 1) : setPage(page - 1);
     window.scrollTo(0, 0);
   };
-
-  console.log(genrePage);
   return (
     <Container>
       <HelmetMeta
