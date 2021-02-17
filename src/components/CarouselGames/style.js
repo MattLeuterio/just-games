@@ -54,17 +54,12 @@ export const CarouselItem = styled.div`
   height: 214px;
 `;
 
-export const Title = styled.div`
+export const TitleSection = styled.div`
   display: flex;
   align-items: center;
   margin: 25px;
   margin-bottom: 20px;
 
-  // Title CarouselGames
-  > div:nth-child(2) {
-    max-width: fit-content;
-    text-transform: uppercase;
-  }
 
   > div:last-child {
     max-width: fit-content;
@@ -72,6 +67,15 @@ export const Title = styled.div`
     background: ${theme.colors.primary.secondary};
     padding: 5px 10px;
     border-radius: 100px;
+  }
+`;
+export const Title = styled.h2`
+  font-size: 18px;
+  max-width: fit-content;
+  text-transform: uppercase;
+
+  @media ${theme.device.mobileL} {
+    font-size: 24px;
   }
 `;
 

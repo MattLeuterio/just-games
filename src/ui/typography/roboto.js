@@ -54,7 +54,6 @@ const types = {
   carouselSubtitle: {
     fontSize: 12,
     fontWeight: 700,
-    fontStyle: 'italic',
   },
   gamePageSectionTitle: {
     fontSize: 27,

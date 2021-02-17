@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import Carousel from "react-elastic-carousel";
 import PropTypes from "prop-types";
 
-import { BadgeTop, CarouselItem, SliderRow, Title } from "./style";
+import {
+  BadgeTop,
+  CarouselItem,
+  SliderRow,
+  TitleSection,
+  Title,
+} from "./style";
 import Roboto from "../../ui/typography/roboto";
 import { CardGame } from "..";
 
@@ -35,11 +41,11 @@ const CarouselGames = ({ title, subtitle, list, basePath }) => {
   return (
     <SliderRow load={load}>
       {title !== undefined && (
-        <Title>
+        <TitleSection>
           {title?.toLowerCase() !== "popular" && <BadgeTop>top 10</BadgeTop>}
-          <Roboto type="carouselTitle">{title}</Roboto>
+          <Title>{title}</Title>
           <Roboto type="carouselSubtitle">{subtitle}</Roboto>
-        </Title>
+        </TitleSection>
       )}
       {!!games && (
         <Carousel {...settings}>
