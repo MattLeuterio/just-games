@@ -280,22 +280,22 @@ const Game = () => {
               <Roboto type="gamePageSectionTitle">Share</Roboto>
             </SectionTitle>
             <ShareButtons>
-              <FacebookShareButton>
+              <FacebookShareButton url={window.location.href}>
                 <FacebookIcon size={42} round />
               </FacebookShareButton>
-              <LinkedinShareButton>
+              <LinkedinShareButton url={window.location.href}>
                 <LinkedinIcon size={42} round />
               </LinkedinShareButton>
-              <RedditShareButton>
+              <RedditShareButton url={window.location.href}>
                 <RedditIcon size={42} round />
               </RedditShareButton>
-              <TwitterShareButton>
+              <TwitterShareButton url={window.location.href}>
                 <TwitterIcon size={42} round />
               </TwitterShareButton>
-              <TelegramShareButton>
+              <TelegramShareButton url={window.location.href}>
                 <TelegramIcon size={42} round />
               </TelegramShareButton>
-              <WhatsappShareButton>
+              <WhatsappShareButton url={window.location.href}>
                 <WhatsappIcon size={42} round />
               </WhatsappShareButton>
               <EmailShareButton>
