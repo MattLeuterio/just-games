@@ -10,7 +10,7 @@ import {
 } from "./style";
 import { CardGame, Jumbotron } from "../../components";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
-import Roboto from "../../ui/typography/roboto";
+import Helvetica from "../../ui/typography/helvetica";
 import {
   getSearchResults,
   selectSearchResults,
@@ -77,7 +77,7 @@ const SearchResults = () => {
         <TitlePage>
           {results?.count} results for
           <span> {locationString.replaceAll("-", " ")}</span>
-          <Roboto type="h2">Page {page}</Roboto>
+          <Helvetica type="h2">Page {page}</Helvetica>
         </TitlePage>
       </Jumbotron>
       {results?.count > 0 && (

@@ -9,7 +9,7 @@ import {
   TitleSection,
   Title,
 } from "./style";
-import Roboto from "../../ui/typography/roboto";
+import Helvetica from "../../ui/typography/helvetica";
 import { CardGame } from "..";
 
 const CarouselGames = ({ title, subtitle, list, basePath }) => {
@@ -44,7 +44,7 @@ const CarouselGames = ({ title, subtitle, list, basePath }) => {
         <TitleSection>
           {title?.toLowerCase() !== "popular" && <BadgeTop>top 10</BadgeTop>}
           <Title>{title}</Title>
-          <Roboto type="carouselSubtitle">{subtitle}</Roboto>
+          <Helvetica type="carouselSubtitle">{subtitle}</Helvetica>
         </TitleSection>
       )}
       {!!games && (

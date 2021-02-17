@@ -8,7 +8,7 @@ import logo from "../../ui/assets/img/logo.png";
 import { Search as SearchIcon } from "react-ionicons";
 import { ActionContainer, Container } from "./style";
 import { selectMenuMain } from "../../features/menuElements/menuElementsSlice";
-import Roboto from "../../ui/typography/roboto";
+import Helvetica from "../../ui/typography/helvetica";
 import { searchModalToggle } from "../../features/modals/modalsSlice";
 
 const Header = ({ mediaIsDesktop }) => {
@@ -36,7 +36,7 @@ const Header = ({ mediaIsDesktop }) => {
               to={menuElm.path}
               activeClassName="menuActive"
             >
-              <Roboto type="mobileMenuElements">{menuElm.title}</Roboto>
+              <Helvetica type="mobileMenuElements">{menuElm.title}</Helvetica>
             </NavLink>
           ))}
         </MobileMenu>

@@ -1,3 +1,3 @@
 export const fonts = {
-  roboto: '"Roboto", sans-serif;'
+  helvetica: '"Helvetica", sans-serif;'
 };

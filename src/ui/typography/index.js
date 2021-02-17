@@ -16,7 +16,7 @@ export const TypefaceInterface = PropTypes.shape({
 
 const defaultConfig = {
   color: "unset",
-  fontFamily: theme.fontset.roboto,
+  fontFamily: theme.fontset.helvetica,
   fontStyle: "normal",
   fontWeight: "normal",
   fontStretch: "normal",
@@ -29,7 +29,7 @@ const defaultConfig = {
 
 const getTypefaceBaseStyle = (props) => `
   color: ${props.config.color || props.theme.colors.primary.black};
-  font-family: ${props.config.fontFamily || props.theme.fontset.roboto};
+  font-family: ${props.config.fontFamily || props.theme.fontset.helvetica};
   font-size: ${props.config.fontSize}px;
   font-style: ${props.config.fontStyle};
   font-weight: ${props.config.fontWeight};

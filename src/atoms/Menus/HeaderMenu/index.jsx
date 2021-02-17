@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 import { MenuElements, Line } from "./style";
-import Roboto from "../../../ui/typography/roboto";
+import Helvetica from "../../../ui/typography/helvetica";
 import { selectMenuMain } from "../../../features/menuElements/menuElementsSlice";
 
 const HeaderMenu = () => {
@@ -17,10 +17,10 @@ const HeaderMenu = () => {
           to={menuElm.path}
           activeClassName="menuActive"
         >
-          <Roboto type="headerMenuElements">
+          <Helvetica type="headerMenuElements">
             {menuElm.title}
             {window.location.pathname === menuElm.path && <Line />}
-          </Roboto>
+          </Helvetica>
         </NavLink>
       ))}
     </MenuElements>

@@ -1,14 +1,14 @@
 import React from "react";
 
 import { Container } from "./style";
-import Roboto from "../../ui/typography/roboto";
+import Helvetica from "../../ui/typography/helvetica";
 import { CircleProgressBar, HelmetMeta } from "../../atoms";
 
 const About = () => {
   return (
     <Container>
       <HelmetMeta titlePage="Just Games - About" path="/about" />
-      <Roboto type="pageTitleSub">About</Roboto>
+      <Helvetica type="pageTitleSub">About</Helvetica>
       <CircleProgressBar vote={79} />
     </Container>
   );

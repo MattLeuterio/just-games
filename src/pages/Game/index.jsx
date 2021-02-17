@@ -40,7 +40,7 @@ import {
 } from "../../features/game/gameSlice";
 import { CircleProgressBar, HelmetMeta } from "../../atoms";
 import { CarouselGames, CarouselMedia, Jumbotron } from "../../components";
-import Roboto from "../../ui/typography/roboto";
+import Helvetica from "../../ui/typography/helvetica";
 import Background from "../../ui/assets/img/search-page-bg.png";
 import {
   DocumentTextOutline as AboutIcon,
@@ -136,14 +136,14 @@ const Game = () => {
           <SectionContainer>
             <SectionTitle>
               <AboutIcon color={"#8E2DE0"} width="32px" height="32px" />
-              <Roboto type="gamePageSectionTitle">About</Roboto>
+              <Helvetica type="gamePageSectionTitle">About</Helvetica>
             </SectionTitle>
-            <Roboto>{gameData?.description_raw}</Roboto>
+            <Helvetica>{gameData?.description_raw}</Helvetica>
           </SectionContainer>
           <SectionContainer>
             <InfoContainer>
               <InfoTitle>
-                <Roboto type="gamePageSectionTitle">Information</Roboto>
+                <Helvetica type="gamePageSectionTitle">Information</Helvetica>
               </InfoTitle>
               <InfoGame>
                 {gameData?.platforms !== null &&
@@ -241,7 +241,7 @@ const Game = () => {
         {gameScreenshots !== null && gameScreenshots?.length > 0 && (
           <Media>
             <MediaHeader>
-              <Roboto type="gamePageSectionTitle">Media</Roboto>
+              <Helvetica type="gamePageSectionTitle">Media</Helvetica>
               <NavMedia
                 selected={selectedNavMedia === "images"}
                 onClick={() => setSelectedNavMedia("images")}
@@ -277,7 +277,7 @@ const Game = () => {
           <SectionContainer>
             <SectionTitle>
               <ShareIcon />
-              <Roboto type="gamePageSectionTitle">Share</Roboto>
+              <Helvetica type="gamePageSectionTitle">Share</Helvetica>
             </SectionTitle>
             <ShareButtons>
               <FacebookShareButton url={window.location.href}>
@@ -308,7 +308,7 @@ const Game = () => {
               <>
                 <SectionTitle>
                   <StoresIcon />
-                  <Roboto type="gamePageSectionTitle">Stores</Roboto>
+                  <Helvetica type="gamePageSectionTitle">Stores</Helvetica>
                 </SectionTitle>
                 <StoresList>
                   {gameData?.stores.map((store) => (
@@ -323,9 +323,9 @@ const Game = () => {
                       rel="noopener noreferrer"
                     >
                       {storesSwitch(`${store?.store?.slug}`)}
-                      <Roboto type="gamePageStoreLabel">
+                      <Helvetica type="gamePageStoreLabel">
                         {store?.store?.name}
-                      </Roboto>
+                      </Helvetica>
                     </LinkStore>
                   ))}
                 </StoresList>
@@ -339,7 +339,7 @@ const Game = () => {
             <Series>
               <SectionTitle>
                 <SeriesIcon />
-                <Roboto type="gamePageSectionTitle">Series</Roboto>
+                <Helvetica type="gamePageSectionTitle">Series</Helvetica>
               </SectionTitle>
               <CarouselGames list={gameSeries} />
             </Series>

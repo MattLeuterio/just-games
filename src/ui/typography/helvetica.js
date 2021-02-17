@@ -6,7 +6,7 @@ import theme from '../theme';
 
 const baseConfig = {
   color: 'unset',
-  fontFamily: theme.fontset.roboto,
+  fontFamily: theme.fontset.helvetica,
   fontStyle: 'normal',
   fontWeight: 400,
   lineHeight: 1.3,
@@ -66,11 +66,11 @@ const types = {
 }  
 
 
-const Roboto = ({
+const Helvetica = ({
   type, configuration, children, htmlAttribute, onClick
 }) => <Typeface htmlAttribute={htmlAttribute} configuration={{ ...baseConfig, ...types[type], ...configuration }} onClick={onClick}>{children}</Typeface>;
 
-Roboto.propTypes = {
+Helvetica.propTypes = {
   htmlAttribute: PropTypes.string,
   children: PropTypes.node,
   type: PropTypes.oneOf(Object.keys(types)),
@@ -78,4 +78,4 @@ Roboto.propTypes = {
   onClick: PropTypes.func
 };
 
-export default Roboto;
+export default Helvetica;

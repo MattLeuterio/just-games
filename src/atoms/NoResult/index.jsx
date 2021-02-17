@@ -1,12 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { NoResultCTN } from "./style";
-import Roboto from "../../ui/typography/roboto";
+import Helvetica from "../../ui/typography/helvetica";
 
 const NoResult = ({ text, widthCtn }) => {
   return (
     <NoResultCTN widthCtn={widthCtn}>
-      <Roboto>{text}</Roboto>
+      <Helvetica>{text}</Helvetica>
     </NoResultCTN>
   );
 };

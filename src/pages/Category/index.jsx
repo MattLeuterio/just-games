@@ -15,7 +15,7 @@ import {
 import { CardGame, Jumbotron } from "../../components";
 import { selectMenuMain } from "../../features/menuElements/menuElementsSlice";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
-import Roboto from "../../ui/typography/roboto";
+import Helvetica from "../../ui/typography/helvetica";
 import { HelmetMeta } from "../../atoms";
 
 const Category = () => {
@@ -51,7 +51,7 @@ const Category = () => {
       <Jumbotron type="genre" background={genrePage?.background}>
         <TitlePage>
           {genrePage?.title} <span>games</span>
-          <Roboto type="h2">Page {page}</Roboto>
+          <Helvetica type="h2">Page {page}</Helvetica>
         </TitlePage>
       </Jumbotron>
       <Results>

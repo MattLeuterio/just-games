@@ -36,7 +36,7 @@ const CarouselMedia = ({ title = "Title", listScreenshots }) => {
         <>
           {/* <Title>
             {title.toLowerCase() !== "popular" && <BadgeTop>top 10</BadgeTop>}
-            <Roboto type="carouselTitle">{title}</Roboto>
+            <Helvetica type="carouselTitle">{title}</Helvetica>
           </Title> */}
           <Carousel {...settings}>
             {screenshots?.map((screenshot) => (
