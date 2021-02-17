@@ -5,6 +5,7 @@ const colors = {
     gray: '#C6C6C6',
     lightGray: '#96A7AF',
     primary: '#8E2DE0',
+    transparentPrimary: 'rgb(32 32 32 / 55%)',
     secondary: '#4A00E0',
     red: '#EB5757',
     green: '#27AE60',

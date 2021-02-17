@@ -65,7 +65,7 @@ export const SearchInput = styled.input`
 export const SuggestionGames = styled.div`
   max-height: calc(100vh - 350px);
   width: 100%;
-  background: ${theme.colors.primary.dark};
+  //background: ${theme.colors.primary.dark};
   position: absolute;
   top: calc(100% + 20px);
   left: 50%;
@@ -76,7 +76,7 @@ export const SuggestionGames = styled.div`
   overflow-y: auto;
 
   > a:not(:last-child) {
-    border-bottom: 1px solid ${theme.colors.primary.light};
+    margin-bottom: 10px;
   }
 `;
 
@@ -84,14 +84,16 @@ export const Game = styled.div`
   padding: 10px;
   min-height: 50px;
   display: flex;
-  align-items: center;  
+  align-items: center;
+  background: ${theme.colors.primary.transparentPrimary};
+  border-radius: 100px;
 
   &:hover {
-    background: ${theme.colors.primary.gray};
+    background: ${theme.colors.primary.dark};
   }
 
-  @media ${theme.device.tabletL} {
-    padding: 10px 25px;
+  @media ${theme.device.mobileL} {
+    padding: 10px 20px;
   }
 `;
 
@@ -108,9 +110,11 @@ export const ImageBox = styled.div`
 
 export const Platform = styled.div`
   display: flex;
+  align-items: center;
   margin-left: auto;
 
-  > span {
+  > span,
+  > div {
     margin-left: 5px;
 
   }
