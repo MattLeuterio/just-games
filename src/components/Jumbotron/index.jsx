@@ -2,21 +2,21 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import PropTypes from "prop-types";
 
+import Slider from "@farbenmeer/react-spring-slider";
 import {
   JumboBg,
   JumbotronContainer,
-  NewGames,
-  Quote,
-  QuoteAuthor,
-  QuoteText,
-  TitleNewGames,
   Divider,
+  ItemSlider,
+  Title,
+  Platform,
+  Info,
+  Button,
 } from "./style";
 import { getNew, selectNew } from "../../features/listGames/listGamesSlice";
-import { selectQuote } from "../../features/quoteJumbotron/quoteJumbotronSlice";
-import { getRandomInt } from "../../utils";
-import { CardGame } from "..";
 import BackgroundHome from "../../ui/assets/img/home-bg.jpg";
+import { platformType } from "../../utils";
+import { Link } from "react-router-dom";
 
 const Jumbotron = ({ type, background = BackgroundHome, children }) => {
   const dispatch = useDispatch();
@@ -25,45 +25,56 @@ const Jumbotron = ({ type, background = BackgroundHome, children }) => {
     dispatch(getNew());
   }, [dispatch]);
 
-  const quotes = useSelector(selectQuote);
-  const randomQuote = getRandomInt(0, quotes?.length - 1);
+  // const quotes = useSelector(selectQuote);
+  // const randomQuote = getRandomInt(0, quotes?.length - 1);
 
   const listNewGame = useSelector(selectNew);
+
+  const BulletComponent = ({ onClick, isActive }) => (
+    <li
+      style={{
+        cursor: "pointer",
+        width: "25px",
+        height: "25px",
+        borderRadius: "50%",
+        backgroundColor: "white",
+        margin: "0 2px",
+        marginBottom: "50px",
+        opacity: !isActive && "0.5",
+      }}
+      onClick={onClick}
+    />
+  );
 
   return (
     <JumbotronContainer type={type}>
       {type === "home" && (
-        <>
-          <Quote>
-            <QuoteText type="quote">{quotes[randomQuote].text}</QuoteText>
-            <QuoteAuthor type="mobileMenuElements">
-              - {quotes[randomQuote].author}
-            </QuoteAuthor>
-          </Quote>
-          <NewGames>
-            <TitleNewGames>New Games</TitleNewGames>
-            {listNewGame.map((game) => (
-              <CardGame
-                key={game.slug}
-                path={`game/${game.slug}`}
-                title={game.name}
-                category={game.category}
-                vote={game.metacritic}
-                platform={game.parent_platforms}
-                cover={game.background_image}
-                clipHover={
-                  game?.clip?.clip !== undefined ? game?.clip.clip : ""
-                }
-                highlight
-              />
-            ))}
-          </NewGames>
-        </>
+        <Slider auto={15000} hasBullets BulletComponent={BulletComponent}>
+          {listNewGame?.map((game) => (
+            <ItemSlider
+              image={
+                game.background_image ? game.background_image : BackgroundHome
+              }
+            >
+              <Info>
+                <Title>{game.name}</Title>
+                <Platform Platform>
+                  {platformType(game?.parent_platforms)}
+                </Platform>
+                <Link to={`game/${game?.slug}`}>
+                  <Button>See Game</Button>
+                </Link>
+              </Info>
+            </ItemSlider>
+          ))}
+        </Slider>
       )}
       {children}
-      <JumboBg type={type} background={background}>
-        {type === "game" && <Divider />}
-      </JumboBg>
+      {type !== "home" && (
+        <JumboBg type={type} background={background}>
+          {type === "game" && <Divider />}
+        </JumboBg>
+      )}
     </JumbotronContainer>
   );
 };
