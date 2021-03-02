@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getSearchResults = createAsyncThunk(
   'search/getSearchResults',
   async (params) => {
-    return axios.get(`https://api.rawg.io/api/games`, { params: {search: params.text, page: params.page}})
+    return axios.get(`https://api.rawg.io/api/games`, { params: {search: params.text, page: params.page, parent_platforms: params.platform, genres: params.genre}})
     .then(res => res.data).catch(err => console.error(err));
   }
 )
