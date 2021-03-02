@@ -25,9 +25,6 @@ const Jumbotron = ({ type, background = BackgroundHome, children }) => {
     dispatch(getNew());
   }, [dispatch]);
 
-  // const quotes = useSelector(selectQuote);
-  // const randomQuote = getRandomInt(0, quotes?.length - 1);
-
   const listNewGame = useSelector(selectNew);
 
   const BulletComponent = ({ onClick, isActive }) => (

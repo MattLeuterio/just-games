@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import {
   Container,
@@ -22,6 +23,7 @@ const SearchResults = () => {
   const [page, setPage] = useState(1);
   const locationString = window.location.pathname.replace("/search/", "");
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     const params = {
@@ -77,7 +79,9 @@ const SearchResults = () => {
         <TitlePage>
           {results?.count} results for
           <span> {locationString.replaceAll("-", " ")}</span>
-          <Helvetica type="h2">Page {page}</Helvetica>
+          {(results.count || []) > 0 && (
+            <Helvetica type="h2">Page {page}</Helvetica>
+          )}
         </TitlePage>
       </Jumbotron>
       {results?.count > 0 && (

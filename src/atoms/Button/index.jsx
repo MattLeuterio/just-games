@@ -15,7 +15,7 @@ Button.defaultProps = {
   color: "#fff",
   text: "Text",
   sizeIcon: 16,
-  padding: "15px 120px",
+  padding: "7px 20px",
 };
 
 Button.propTypes = {

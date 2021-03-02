@@ -14,6 +14,7 @@ import {
   Clip,
 } from "./style";
 import { platformType } from "../../utils";
+import noImage from "../../ui/assets/img/footer-bg.jpg";
 
 const CardGame = ({
   path,
@@ -40,7 +41,7 @@ const CardGame = ({
       <CardContainer
         width={width}
         height={height}
-        cover={cover}
+        cover={cover ? cover : noImage}
         highlight={highlight}
       >
         <Top>
