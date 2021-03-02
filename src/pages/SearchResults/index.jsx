@@ -7,7 +7,7 @@ import {
   Results,
   ButtonPagination,
   Pagination,
-  Filters
+  Filters,
 } from "./style";
 import { CardGame, Jumbotron } from "../../components";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
@@ -20,12 +20,15 @@ import Background from "../../ui/assets/img/search-page-bg.png";
 import { HelmetMeta } from "../../atoms";
 
 //Material/UI
-import { makeStyles } from '@material-ui/core/styles';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
-import { getPlatformsList, selectPlatforms } from "../../features/platforms/platformsSlice";
+import { makeStyles } from "@material-ui/core/styles";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import {
+  getPlatformsList,
+  selectPlatforms,
+} from "../../features/platforms/platformsSlice";
 
 const SearchResults = () => {
   const [page, setPage] = useState(1);
@@ -33,7 +36,7 @@ const SearchResults = () => {
   const [genre, setGenre] = useState(null);
   const locationString = window.location.pathname.replace("/search/", "");
   const dispatch = useDispatch();
-  
+
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
@@ -43,13 +46,12 @@ const SearchResults = () => {
       marginTop: theme.spacing(2),
     },
     colorLight: {
-      color: '#eceaef',
-    }
+      color: "#eceaef",
+    },
   }));
 
   const classes = useStyles();
 
-  
   const handleChangePlatform = (event) => {
     setPlatform(event.target.value);
   };
@@ -59,7 +61,7 @@ const SearchResults = () => {
       text: locationString,
       page: page,
       platform: platform,
-      genre: genre
+      genre: genre,
     };
     dispatch(getSearchResults(params));
     dispatch(getPlatformsList());
@@ -68,24 +70,7 @@ const SearchResults = () => {
   const results = useSelector(selectSearchResults);
   const platforms = useSelector(selectPlatforms);
 
-  console.log(platforms)
-
-  // const allPlatforms = results?.results?.reduce((acc, obj) => {
-  //   const list = obj.parent_platforms.map(res => {
-  //     //console.log(res.platform.slug, res.platform.name)
-  //     return ({
-  //       slug: res.platform.slug,
-  //       name: res.platform.name
-  //     })
-  //   })
-
-  //   const giusto = list.filter(res => !acc.includes(res.slug) ? console.log(res.slug, 'res') : console.log(res, 'null'));
-  //   //console.log(list, 'LIIIIST', acc)
-  //   //const module = obj.modules.map((r) => ({ label: r.name, value: r.id }));
-  //   return [...acc, ...giusto];
-  // }, [])
-
-  // console.log(allPlatforms)
+  console.log(platforms);
 
   const handleOnClickPageButton = (type) => {
     type === "next" ? setPage(page + 1) : setPage(page - 1);
@@ -140,23 +125,27 @@ const SearchResults = () => {
         <>
           <Filters>
             <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel 
+              <InputLabel
                 id="demo-simple-select-outlined-label"
                 className={classes.colorLight}
-              >Platform</InputLabel>
+              >
+                Platform
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
                 className={classes.colorLight}
                 value={platform}
                 onChange={handleChangePlatform}
-                label="Platform"
+                label={platform === null && "Platform"}
               >
-                <MenuItem value="">
-                  <em>Reset</em>
+                <MenuItem value={null}>
+                  <em>All</em>
                 </MenuItem>
-                {platforms?.map(platParent => (
-                  <MenuItem key={platParent.id} value={platParent.id}>{platParent.name}</MenuItem>
+                {platforms?.map((platParent) => (
+                  <MenuItem key={platParent.id} value={platParent.id}>
+                    {platParent.name}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
