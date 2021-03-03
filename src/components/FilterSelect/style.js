@@ -25,4 +25,10 @@ export const SelectContainer = styled.div`
   .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
     border-color: ${theme.colors.primary.secondary};
   }
+
+  .MuiMenuItem-root {
+    font-family: inherit;
+    font-size: 14px;
+  }
 `;
+
