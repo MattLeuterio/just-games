@@ -9,14 +9,26 @@ export const getSearchResults = createAsyncThunk(
   }
 )
 
+export const getPlatformsList = createAsyncThunk(
+  'search/getPlatformsList',
+  async (slug) => {
+    return axios.get(`https://api.rawg.io/api/platforms/lists/parents`)
+    .then(res => res.data.results).catch(err => console.error(err));
+  }
+)
+
 export const searchSlice = createSlice({
   name: 'search',
   initialState: {
-    searchResults: []
+    searchResults: [],
+    platformsList: [],
   },
   extraReducers: {
     [getSearchResults.fulfilled]: (state, { payload }) => {
       state.searchResults = payload
+    },
+    [getPlatformsList.fulfilled]: (state, { payload }) => {
+      state.platformsList = payload
     },
   }
 });
@@ -25,5 +37,6 @@ export const searchSlice = createSlice({
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 export const selectSearchResults = state => state.search.searchResults;
+export const selectPlatforms = state => state.search.platformsList;
 
 export default searchSlice.reducer;

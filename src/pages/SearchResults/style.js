@@ -61,28 +61,4 @@ export const ButtonPagination = styled.button`
 `;
 
 export const Filters = styled.div`
-
-  .MuiOutlinedInput-notchedOutline {
-    border-color: ${theme.colors.primary.darkAccent};
-  }
-
-  .MuiSelect-icon {
-    color: ${theme.colors.primary.darkAccent};  
-  }
-
-  .MuiPaper-root {
-    background: ${theme.colors.primary.darkAccent};
-  }
-
-  .MuiOutlinedInput-input {
-    padding: 14.5px 14px
-  }
-
-  .MuiInputLabel-outlined {
-    transform: translate(14px, 17.5px) scale(1);
-  }
-
-  .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-    border-color: ${theme.colors.primary.secondary};
-}
 `;

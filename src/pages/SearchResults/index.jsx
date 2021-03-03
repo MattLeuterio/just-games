@@ -9,12 +9,14 @@ import {
   Pagination,
   Filters,
 } from "./style";
-import { CardGame, Jumbotron } from "../../components";
+import { CardGame, FilterSelect, Jumbotron } from "../../components";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
 import Helvetica from "../../ui/typography/helvetica";
 import {
   getSearchResults,
   selectSearchResults,
+  getPlatformsList,
+  selectPlatforms,
 } from "../../features/search/searchSlice";
 import Background from "../../ui/assets/img/search-page-bg.png";
 import { HelmetMeta } from "../../atoms";
@@ -25,10 +27,6 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import {
-  getPlatformsList,
-  selectPlatforms,
-} from "../../features/platforms/platformsSlice";
 
 const SearchResults = () => {
   const [page, setPage] = useState(1);
@@ -52,8 +50,9 @@ const SearchResults = () => {
 
   const classes = useStyles();
 
-  const handleChangePlatform = (event) => {
-    setPlatform(event.target.value);
+  const handleChangePlatform = (val) => {
+    console.log(val)
+    setPlatform(val);
   };
 
   useEffect(() => {
@@ -115,8 +114,8 @@ const SearchResults = () => {
       >
         <TitlePage>
           {results?.count} results for
-          <span> {locationString.replaceAll("-", " ")}</span>
-          {(results.count || []) > 0 && (
+          <span> {locationString?.replaceAll("-", " ")}</span>
+          {(results?.count || []) > 0 && (
             <Helvetica type="h2">Page {page}</Helvetica>
           )}
         </TitlePage>
@@ -124,31 +123,12 @@ const SearchResults = () => {
       {results?.count > 0 && (
         <>
           <Filters>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel
-                id="demo-simple-select-outlined-label"
-                className={classes.colorLight}
-              >
-                Platform
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                className={classes.colorLight}
-                value={platform}
-                onChange={handleChangePlatform}
-                label={platform === null && "Platform"}
-              >
-                <MenuItem value={null}>
-                  <em>All</em>
-                </MenuItem>
-                {platforms?.map((platParent) => (
-                  <MenuItem key={platParent.id} value={platParent.id}>
-                    {platParent.name}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+            <FilterSelect 
+              value={platform} 
+              onChange={handleChangePlatform} 
+              label="Platform" 
+              list={platforms} 
+            />
           </Filters>
           <Results>
             {results?.results?.map((game) => (
