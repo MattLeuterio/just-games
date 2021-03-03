@@ -52,8 +52,11 @@ export const Bottom = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const Category = styled.div`
