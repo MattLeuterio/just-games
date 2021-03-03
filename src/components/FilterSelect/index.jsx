@@ -8,16 +8,14 @@ import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { ReactReduxContext } from "react-redux";
 
 const FilterSelect = ({
   label,
   list,
   onChange,
-  value
+  value,
+  noSelectionLabel = "All",
 }) => {
-  //const [value, setValue] = useState(null);
-
   const useStyles = makeStyles((theme) => ({
     formControl: {
       margin: theme.spacing(1),
@@ -33,15 +31,6 @@ const FilterSelect = ({
 
   const classes = useStyles();
 
-  // const handleChange = () => {
-  //   onChange();
-  // };
-
-  // useEffect(() => {
-  //   handleChange()
-  // }, [value])
-  
-  console.log(list)
   return (
     <SelectContainer>
       <FormControl variant="outlined" className={classes.formControl}>
@@ -56,11 +45,11 @@ const FilterSelect = ({
           id="demo-simple-select-outlined"
           className={classes.colorLight}
           value={value}
-          onChange={e => onChange(e.target.value)}
+          onChange={(e) => onChange(e.target.value)}
           label={label}
         >
           <MenuItem value={null}>
-            <em>All</em>
+            <em>{noSelectionLabel}</em>
           </MenuItem>
           {list?.map((elem) => (
             <MenuItem key={elem.id} value={elem.id}>
@@ -75,7 +64,7 @@ const FilterSelect = ({
 
 FilterSelect.propTypes = {
   label: PropTypes.string,
-  list: PropTypes.array
+  list: PropTypes.array,
 };
 
 export default FilterSelect;

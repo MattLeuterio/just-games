@@ -17,59 +17,53 @@ import {
   selectSearchResults,
   getPlatformsList,
   selectPlatforms,
+  selectGenres,
+  getGenresList,
+  selectOrder,
 } from "../../features/search/searchSlice";
 import Background from "../../ui/assets/img/search-page-bg.png";
 import { HelmetMeta } from "../../atoms";
-
-//Material/UI
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 
 const SearchResults = () => {
   const [page, setPage] = useState(1);
   const [platform, setPlatform] = useState(null);
   const [genre, setGenre] = useState(null);
+  const [ordering, setOrdering] = useState(null);
   const locationString = window.location.pathname.replace("/search/", "");
   const dispatch = useDispatch();
 
-  const useStyles = makeStyles((theme) => ({
-    formControl: {
-      margin: theme.spacing(1),
-      minWidth: 150,
-    },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
-    colorLight: {
-      color: "#eceaef",
-    },
-  }));
-
-  const classes = useStyles();
-
   const handleChangePlatform = (val) => {
-    console.log(val)
     setPlatform(val);
+    setPage(1);
+  };
+
+  const handleChangeGenre = (val) => {
+    setGenre(val);
+    setPage(1);
+  };
+
+  const handleChangeOrdering = (val) => {
+    setOrdering(val);
+    setPage(1);
   };
 
   useEffect(() => {
     const params = {
       text: locationString,
-      page: page,
-      platform: platform,
-      genre: genre,
+      page,
+      platform,
+      genre,
+      ordering,
     };
     dispatch(getSearchResults(params));
     dispatch(getPlatformsList());
-  }, [dispatch, genre, locationString, page, platform]);
+    dispatch(getGenresList());
+  }, [dispatch, genre, locationString, page, platform, ordering]);
 
   const results = useSelector(selectSearchResults);
   const platforms = useSelector(selectPlatforms);
-
-  console.log(platforms);
+  const genres = useSelector(selectGenres);
+  const order = useSelector(selectOrder);
 
   const handleOnClickPageButton = (type) => {
     type === "next" ? setPage(page + 1) : setPage(page - 1);
@@ -120,16 +114,29 @@ const SearchResults = () => {
           )}
         </TitlePage>
       </Jumbotron>
+      <Filters>
+        <FilterSelect
+          value={platform}
+          onChange={handleChangePlatform}
+          label="Platform"
+          list={platforms}
+        />
+        <FilterSelect
+          value={genre}
+          onChange={handleChangeGenre}
+          label="Genre"
+          list={genres}
+        />
+        <FilterSelect
+          value={ordering}
+          onChange={handleChangeOrdering}
+          label="Order"
+          list={order}
+          noSelectionLabel="Popular"
+        />
+      </Filters>
       {results?.count > 0 && (
         <>
-          <Filters>
-            <FilterSelect 
-              value={platform} 
-              onChange={handleChangePlatform} 
-              label="Platform" 
-              list={platforms} 
-            />
-          </Filters>
           <Results>
             {results?.results?.map((game) => (
               <CardGame
@@ -148,18 +155,24 @@ const SearchResults = () => {
               />
             ))}
           </Results>
-          <Pagination>
-            <ButtonPagination
-              type="button"
-              onClick={() => handleOnClickPageButton("prev")}
-              disabled={page === 1}
-            >
-              <ChevronBackOutline />
-            </ButtonPagination>
-            <ButtonPagination onClick={() => handleOnClickPageButton("next")}>
-              <ChevronForwardOutline />
-            </ButtonPagination>
-          </Pagination>
+
+          {results?.count >= 20 && (
+            <Pagination>
+              <ButtonPagination
+                type="button"
+                onClick={() => handleOnClickPageButton("prev")}
+                disabled={page === 1}
+              >
+                <ChevronBackOutline />
+              </ButtonPagination>
+              <ButtonPagination
+                onClick={() => handleOnClickPageButton("next")}
+                disabled={results?.next === null}
+              >
+                <ChevronForwardOutline />
+              </ButtonPagination>
+            </Pagination>
+          )}
         </>
       )}
     </Container>

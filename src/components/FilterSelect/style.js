@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import theme from '../../ui/theme';
 
 export const SelectContainer = styled.div`
+  
   .MuiOutlinedInput-notchedOutline {
     border-color: ${theme.colors.primary.darkAccent};
   }
@@ -11,7 +12,12 @@ export const SelectContainer = styled.div`
   }
 
   .MuiPaper-root {
-    background-color: ${theme.colors.primary.darkAccent};
+    background-color: ${theme.colors.primary.dark};
+
+    > ul {
+      padding-top: 80px;
+      padding-bottom: 80px;
+    }
   }
 
   .MuiOutlinedInput-input {
@@ -29,6 +35,11 @@ export const SelectContainer = styled.div`
   .MuiMenuItem-root {
     font-family: inherit;
     font-size: 14px;
+  }
+
+  .MuiList-padding {
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 `;
 
