@@ -42,6 +42,15 @@ export const Clip = styled.div`
   display: ${props => props.show ? 'block' : 'none'};
 `;
 
+export const ActionClip = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  display: ${props => props.shows ? 'block' : 'none'};
+  justify-content: space-between;
+  padding: 0px 10px;
+`;
+
 export const Top = styled.div``;
 
 export const Bottom = styled.div`

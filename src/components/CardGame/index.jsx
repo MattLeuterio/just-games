@@ -12,9 +12,14 @@ import {
   Category,
   Platform,
   Clip,
+  ActionClip,
 } from "./style";
 import { platformType } from "../../utils";
 import noImage from "../../ui/assets/img/footer-bg.jpg";
+import {
+  VolumeHighOutline as IconSoundOn,
+  VolumeMuteOutline as IconSoundOff,
+} from "react-ionicons";
 
 const CardGame = ({
   path,
@@ -29,6 +34,12 @@ const CardGame = ({
   height = "100%",
 }) => {
   const [showClip, setShowClip] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
+
+  const handleClickSound = (e) => {
+    e.preventDefault();
+    setIsMuted(!isMuted);
+  };
 
   return (
     <NavLink
@@ -58,9 +69,29 @@ const CardGame = ({
             width="400px"
             height="auto"
             loop
-            muted
+            muted={isMuted}
             playing={showClip}
           />
+
+          <ActionClip shows={clipHover !== "" ? showClip : null}>
+            {isMuted ? (
+              <IconSoundOff
+                color={"#ECEAEF"}
+                title="ciao"
+                height="25px"
+                width="25px"
+                onClick={(e) => handleClickSound(e)}
+              />
+            ) : (
+              <IconSoundOn
+                color={"#ECEAEF"}
+                title="ciao"
+                height="25px"
+                width="25px"
+                onClick={(e) => handleClickSound(e)}
+              />
+            )}
+          </ActionClip>
         </Clip>
       </CardContainer>
     </NavLink>
