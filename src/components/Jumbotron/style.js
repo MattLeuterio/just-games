@@ -3,12 +3,13 @@ import theme from '../../ui/theme';
 
 export const JumbotronContainer = styled.div`
   position: relative;
-  height: ${props => props.type !== 'home' ? `80vh` : `90vh`};
+  //height: ${props => props.type !== 'home' ? `80vh` : `90vh`};
+  height: 80vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  clip-path: ${props => props.type === 'home' ? `circle(190vh at 50% -100vh);` : 'none'};
+  //clip-path: ${props => props.type === 'home' ? `circle(190vh at 50% -100vh);` : 'none'};
 
   @media ${theme.device.tabletL} {
     padding-top: 0;
@@ -25,7 +26,7 @@ export const JumboBg = styled.div`
   background: ${props => props.type === "game" ? 
     `${theme.colors.gradients.gameHeader}, url(${props.background})` 
     : `${theme.colors.gradients.card}, url(${props.background})`};
-  clip-path: ${props => props.type !== 'game' ? `circle(180vh at 50% -100vh)` : 'none'};
+  //clip-path: ${props => props.type !== 'game' ? `circle(180vh at 50% -100vh)` : 'none'};
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;

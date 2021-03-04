@@ -35,7 +35,7 @@ const Jumbotron = ({ type, background = BackgroundHome, children }) => {
         height: "25px",
         borderRadius: "50%",
         backgroundColor: "white",
-        margin: "0 2px",
+        margin: "0 6px",
         marginBottom: "50px",
         opacity: !isActive && "0.5",
       }}

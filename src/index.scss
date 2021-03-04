@@ -5,6 +5,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #100e16;
   color: #eceaef;
+
+  // Filter Select List
+  .MuiList-root {
+    background-color: #3f51b5;
+    color: #edeaf0;
+    padding: 5px 0px;
+  }
+
+  .MuiMenuItem-root {
+    font-size: 14px;
+    font-family: inherit;
+  }
 }
 
 code {
