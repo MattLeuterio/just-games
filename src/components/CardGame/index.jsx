@@ -73,7 +73,7 @@ const CardGame = ({
             playing={showClip}
           />
 
-          <ActionClip shows={clipHover !== "" ? showClip : null}>
+          <ActionClip showAction={clipHover !== "" ? showClip : null}>
             {isMuted ? (
               <IconSoundOff
                 color={"#ECEAEF"}

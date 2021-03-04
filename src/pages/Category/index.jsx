@@ -105,6 +105,7 @@ const Category = () => {
             cover={game?.background_image}
             width="250px"
             height="320px"
+            clipHover=""
           />
         ))}
       </Results>
