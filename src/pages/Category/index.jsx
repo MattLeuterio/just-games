@@ -17,7 +17,7 @@ import { CardGame, FilterSelect, Jumbotron } from "../../components";
 import { selectMenuMain } from "../../features/menuElements/menuElementsSlice";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
 import Helvetica from "../../ui/typography/helvetica";
-import { HelmetMeta } from "../../atoms";
+import { HelmetMeta, NoResult } from "../../atoms";
 import {
   getPlatformsList,
   selectOrder,
@@ -31,6 +31,10 @@ const Category = () => {
 
   const locationString = window.location.pathname.replace("/genre/", "");
   const dispatch = useDispatch();
+
+  const games = useSelector(selectGamesByGenre);
+  const platforms = useSelector(selectPlatforms);
+  const order = useSelector(selectOrder);
 
   useEffect(() => {
     const params = {
@@ -51,10 +55,6 @@ const Category = () => {
     setOrdering(val);
     setPage(1);
   };
-
-  const games = useSelector(selectGamesByGenre);
-  const platforms = useSelector(selectPlatforms);
-  const order = useSelector(selectOrder);
 
   const genrePage = useSelector(selectMenuMain).filter(
     (genre) => genre.path === window.location.pathname
@@ -94,33 +94,41 @@ const Category = () => {
         />
       </Filters>
       <Results>
-        {games?.results?.map((game) => (
-          <CardGame
-            key={game?.slug}
-            path={`/game/${game?.slug}`}
-            title={game?.name}
-            category={game?.category}
-            vote={game?.metacritic}
-            platform={game.parent_platforms}
-            cover={game?.background_image}
-            width="250px"
-            height="320px"
-            clipHover=""
-          />
-        ))}
+        {games?.count > 0 ? (
+          <>
+            {games?.results?.map((game) => (
+              <CardGame
+                key={game?.slug}
+                path={`/game/${game?.slug}`}
+                title={game?.name}
+                category={game?.category}
+                vote={game?.metacritic}
+                platform={game.parent_platforms}
+                cover={game?.background_image}
+                width="250px"
+                height="320px"
+                clipHover=""
+              />
+            ))}
+          </>
+        ) : (
+          <NoResult widthCtn="fit-content" />
+        )}
       </Results>
-      <Pagination>
-        <ButtonPagination
-          type="button"
-          onClick={() => handleOnClickPageButton("prev")}
-          disabled={page === 1}
-        >
-          <ChevronBackOutline />
-        </ButtonPagination>
-        <ButtonPagination onClick={() => handleOnClickPageButton("next")}>
-          <ChevronForwardOutline />
-        </ButtonPagination>
-      </Pagination>
+      {games?.count >= 20 && (
+        <Pagination>
+          <ButtonPagination
+            type="button"
+            onClick={() => handleOnClickPageButton("prev")}
+            disabled={page === 1}
+          >
+            <ChevronBackOutline />
+          </ButtonPagination>
+          <ButtonPagination onClick={() => handleOnClickPageButton("next")}>
+            <ChevronForwardOutline />
+          </ButtonPagination>
+        </Pagination>
+      )}
     </Container>
   );
 };
