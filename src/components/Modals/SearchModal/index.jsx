@@ -40,7 +40,7 @@ const SearchModal = ({ open }) => {
     if (valueSearch.length < 2) setSuggestionBoxVisibility(false);
   };
 
-  const handleOnMouseEnter = (e) => {
+  const handleOnKeyPressEnter = (e) => {
     if (e.key === "Enter" && e.target.value.length > 0) {
       history.push(`/search/${valueSearch.replaceAll(" ", "-").toLowerCase()}`);
       onClose();
@@ -56,23 +56,28 @@ const SearchModal = ({ open }) => {
     onClose();
   };
 
+  const onClickIconCloseModal = () => {
+    const locationString = window.location.pathname.replace("/search/", "");
+    dispatch(getSearchResults({ text: locationString, page: 1 }));
+    onClose();
+  }
+  
   const onClose = () => {
+    setValueSearch('');
     dispatch(searchModalToggle());
-    setValueSearch("");
-    dispatch(getSearchResults({ text: valueSearch, page: 1 }));
     setSuggestionBoxVisibility(false);
   };
 
   return (
     <Container open={open}>
-      <CloseIcon onClick={() => onClose()} />
+      <CloseIcon onClick={() => onClickIconCloseModal()} />
       <SearchContainer>
         <SearchInput
           type="text"
           placeholder="Search..."
           value={valueSearch}
           onChange={(e) => handleOnChange(e.target.value)}
-          onKeyPress={(e) => handleOnMouseEnter(e)}
+          onKeyPress={(e) => handleOnKeyPressEnter(e)}
           maxlength="10"
         />
         <SearchIcon

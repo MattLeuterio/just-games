@@ -58,3 +58,16 @@ export const ButtonPagination = styled.button`
       : `${theme.colors.primary.primary}`}
   }
 `;
+
+export const Filters = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  margin: 100px 0;
+
+  @media ${theme.device.mobileL} {
+    flex-direction: row;
+  }
+`;

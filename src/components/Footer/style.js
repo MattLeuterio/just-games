@@ -22,13 +22,27 @@ export const Container = styled.footer`
     justify-content: space-between;
     padding: 0 135px;
   }
+
+  & > a:first-child {
+    margin-top: 6px;
+
+    & > div {
+      cursor: pointer;
+    }
+  }
 `;
 
 export const Copyright = styled.div`
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 20px;
+  font-size: 14px;
+  margin-top: 20px;
+
+  @media ${theme.device.tabletL} {
+    margin: 0;
+  }
 `;
 
-export const Link = styled.a``
+export const Link = styled.a`
+  &:hover {
+    color: ${theme.colors.primary.dark};
+  }
+`

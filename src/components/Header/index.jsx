@@ -43,15 +43,15 @@ const Header = ({ mediaIsDesktop }) => {
       )}
       <Container scroll={scrollPosition}>
         <NavLink exact to="/">
-          <Image src={logo} width="162px" alt="logo Just Games" />
+          <Image src={logo} width="122px" alt="logo Just Games" />
         </NavLink>
         {mediaIsDesktop && <HeaderMenu />}
         <ActionContainer>
           <SearchIcon
             onClick={() => dispatch(searchModalToggle())}
             color={"#eceaef"}
-            width="35px"
-            height="35px"
+            width="30px"
+            height="30px"
           />
           {!mediaIsDesktop && (
             <HamburgerMenu

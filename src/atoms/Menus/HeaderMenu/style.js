@@ -14,7 +14,7 @@ export const MenuElements = styled.div`
     position: relative;
     
     &:not(:last-child) {
-      margin-right: 30px;
+      margin-right: 25px;
     }
 
     &.menuActive {

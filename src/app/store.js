@@ -13,6 +13,6 @@ export default configureStore({
     listGames: listGamesReducer,
     game: gameDataReducer,
     search: searchResultsReducer,
-    modals: modalsReducer
+    modals: modalsReducer,
   },
 });

@@ -38,7 +38,7 @@ const types = {
     lineHeight: 1.14
   },
   headerMenuElements: {
-    fontSize: 16
+    fontSize: 14
   },
   footerMenuElements: {
     fontSize: 28

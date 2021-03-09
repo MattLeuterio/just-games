@@ -17,8 +17,8 @@ export const Container = styled.header`
   > a:first-child > div {
     cursor: pointer;
   }
-  > div>img {
 
+  > div > img {
     z-index: ${theme.zIndex.menus};
   }
 

@@ -17,7 +17,7 @@ export const getNew = createAsyncThunk(
 export const getGameByGenre = createAsyncThunk(
   'listGames/getGameByGenre',
   async (params) => {
-    return axios.get(`https://api.rawg.io/api/games`, { params: {genres: params.slug, page: params.page, page_size: '20'} })
+    return axios.get(`https://api.rawg.io/api/games`, { params: {genres: params.slug, page: params.page, page_size: '20', ordering: params.ordering, parent_platforms: params.platform} })
     .then(res => res.data).catch(err => console.error(err));
   }
 )

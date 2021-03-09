@@ -38,7 +38,7 @@ import {
   selectGameScreenshots,
   selectGameSeries,
 } from "../../features/game/gameSlice";
-import { CircleProgressBar, HelmetMeta } from "../../atoms";
+import { CircleProgressBar, HelmetMeta, NoResult } from "../../atoms";
 import { CarouselGames, CarouselMedia, Jumbotron } from "../../components";
 import Helvetica from "../../ui/typography/helvetica";
 import Background from "../../ui/assets/img/search-page-bg.png";
@@ -138,7 +138,13 @@ const Game = () => {
               <AboutIcon color={"#8E2DE0"} width="32px" height="32px" />
               <Helvetica type="gamePageSectionTitle">About</Helvetica>
             </SectionTitle>
-            <Helvetica>{gameData?.description_raw}</Helvetica>
+            <Helvetica>
+              {gameData?.description_raw !== "" ? (
+                gameData?.description_raw
+              ) : (
+                <NoResult text="No description" />
+              )}
+            </Helvetica>
           </SectionContainer>
           <SectionContainer>
             <InfoContainer>

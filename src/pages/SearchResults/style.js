@@ -31,7 +31,6 @@ export const Results = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 100px 0;
 
   a {
     margin: 10px;
@@ -41,6 +40,7 @@ export const Results = styled.div`
 export const Pagination = styled.div`
   display: flex;
   justify-content: space-around;
+  min-height: 100px;
 `;
 
 export const ButtonPagination = styled.button`
@@ -57,5 +57,18 @@ export const ButtonPagination = styled.button`
     color: ${props => props.disabled ? 
       `${theme.colors.primary.gray}`
       : `${theme.colors.primary.primary}`}
+  }
+`;
+
+export const Filters = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px;
+  margin: 100px 0;
+
+  @media ${theme.device.mobileL} {
+    flex-direction: row;
   }
 `;

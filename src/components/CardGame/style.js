@@ -42,6 +42,15 @@ export const Clip = styled.div`
   display: ${props => props.show ? 'block' : 'none'};
 `;
 
+export const ActionClip = styled.div`
+  position: absolute;
+  bottom: 10px;
+  left: 40px;
+  display: ${props => props.showAction ? 'block' : 'none'};
+  justify-content: space-between;
+  padding: 0px 10px;
+`;
+
 export const Top = styled.div``;
 
 export const Bottom = styled.div`
@@ -52,8 +61,11 @@ export const Bottom = styled.div`
 `;
 
 export const Title = styled.div`
-  font-size: 22px;
+  font-size: 18px;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
 export const Category = styled.div`

@@ -7,31 +7,63 @@ import {
   Results,
   ButtonPagination,
   Pagination,
+  Filters,
 } from "./style";
-import { CardGame, Jumbotron } from "../../components";
+import { CardGame, FilterSelect, Jumbotron } from "../../components";
 import { ChevronForwardOutline, ChevronBackOutline } from "react-ionicons";
 import Helvetica from "../../ui/typography/helvetica";
 import {
   getSearchResults,
   selectSearchResults,
+  getPlatformsList,
+  selectPlatforms,
+  selectGenres,
+  getGenresList,
+  selectOrder,
 } from "../../features/search/searchSlice";
 import Background from "../../ui/assets/img/search-page-bg.png";
-import { HelmetMeta } from "../../atoms";
+import { HelmetMeta, NoResult } from "../../atoms";
 
 const SearchResults = () => {
   const [page, setPage] = useState(1);
+  const [platform, setPlatform] = useState(null);
+  const [genre, setGenre] = useState(null);
+  const [ordering, setOrdering] = useState(null);
   const locationString = window.location.pathname.replace("/search/", "");
   const dispatch = useDispatch();
+
+  const handleChangePlatform = (val) => {
+    setPlatform(val);
+    setPage(1);
+  };
+
+  const handleChangeGenre = (val) => {
+    setGenre(val);
+    setPage(1);
+  };
+
+  const handleChangeOrdering = (val) => {
+    setOrdering(val);
+    setPage(1);
+  };
 
   useEffect(() => {
     const params = {
       text: locationString,
-      page: page,
+      page,
+      platform,
+      genre,
+      ordering,
     };
     dispatch(getSearchResults(params));
-  }, [dispatch, locationString, page]);
+    dispatch(getPlatformsList());
+    dispatch(getGenresList());
+  }, [dispatch, genre, locationString, page, platform, ordering]);
 
   const results = useSelector(selectSearchResults);
+  const platforms = useSelector(selectPlatforms);
+  const genres = useSelector(selectGenres);
+  const order = useSelector(selectOrder);
 
   const handleOnClickPageButton = (type) => {
     type === "next" ? setPage(page + 1) : setPage(page - 1);
@@ -76,13 +108,36 @@ const SearchResults = () => {
       >
         <TitlePage>
           {results?.count} results for
-          <span> {locationString.replaceAll("-", " ")}</span>
-          <Helvetica type="h2">Page {page}</Helvetica>
+          <span> {locationString?.replaceAll("-", " ")}</span>
+          {(results?.count || []) > 0 && (
+            <Helvetica type="h2">Page {page}</Helvetica>
+          )}
         </TitlePage>
       </Jumbotron>
-      {results?.count > 0 && (
-        <>
-          <Results>
+      <Filters>
+        <FilterSelect
+          value={platform}
+          onChange={handleChangePlatform}
+          label="Platform"
+          list={platforms}
+        />
+        <FilterSelect
+          value={genre}
+          onChange={handleChangeGenre}
+          label="Genre"
+          list={genres}
+        />
+        <FilterSelect
+          value={ordering}
+          onChange={handleChangeOrdering}
+          label="Order"
+          list={order}
+          noSelectionLabel="Popular"
+        />
+      </Filters>
+      <Results>
+        {results?.count > 0 ? (
+          <>
             {results?.results?.map((game) => (
               <CardGame
                 key={game?.slug}
@@ -99,20 +154,27 @@ const SearchResults = () => {
                 }
               />
             ))}
-          </Results>
-          <Pagination>
-            <ButtonPagination
-              type="button"
-              onClick={() => handleOnClickPageButton("prev")}
-              disabled={page === 1}
-            >
-              <ChevronBackOutline />
-            </ButtonPagination>
-            <ButtonPagination onClick={() => handleOnClickPageButton("next")}>
-              <ChevronForwardOutline />
-            </ButtonPagination>
-          </Pagination>
-        </>
+          </>
+        ) : (
+          <NoResult widthCtn="fit-content" />
+        )}
+      </Results>
+      {results?.count >= 20 && (
+        <Pagination>
+          <ButtonPagination
+            type="button"
+            onClick={() => handleOnClickPageButton("prev")}
+            disabled={page === 1}
+          >
+            <ChevronBackOutline />
+          </ButtonPagination>
+          <ButtonPagination
+            onClick={() => handleOnClickPageButton("next")}
+            disabled={results?.next === null}
+          >
+            <ChevronForwardOutline />
+          </ButtonPagination>
+        </Pagination>
       )}
     </Container>
   );
