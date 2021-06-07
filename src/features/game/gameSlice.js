@@ -1,11 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { gameKey } from '../../utils';
 
 
 export const getGameScreenshots = createAsyncThunk(
   'game/getGameScreenshots',
   async (slug) => {
-    return axios.get(`https://api.rawg.io/api/games/${slug}/screenshots`)
+    return axios.get(`https://api.rawg.io/api/games/${slug}/screenshots?key=${gameKey}`)
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -13,7 +14,7 @@ export const getGameScreenshots = createAsyncThunk(
 export const getGameSeries = createAsyncThunk(
   'game/GetGameSeries',
   async (slug) => {
-    return axios.get(`https://api.rawg.io/api/games/${slug}/game-series`)
+    return axios.get(`https://api.rawg.io/api/games/${slug}/game-series?key=${gameKey}`)
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -21,7 +22,7 @@ export const getGameSeries = createAsyncThunk(
 export const getGame = createAsyncThunk(
   'game/GetGame',
   async (slug) => {
-    return axios.get(`https://api.rawg.io/api/games/${slug}`)
+    return axios.get(`https://api.rawg.io/api/games/${slug}?key=${gameKey}`)
     .then(res => res.data).catch(err => console.error(err));
   }
 )

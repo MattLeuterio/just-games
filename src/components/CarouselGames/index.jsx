@@ -38,6 +38,7 @@ const CarouselGames = ({ title, subtitle, list, basePath }) => {
     ],
   };
 
+  console.log('games', games);
   return (
     <SliderRow load={load}>
       {title !== undefined && (

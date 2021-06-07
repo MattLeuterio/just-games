@@ -126,6 +126,8 @@ export const platformType = (plat) => {
   }
 };
 
+export const gameKey = process.env.REACT_APP_RAWG_KEY;
+export const gamesApiCall = `https://api.rawg.io/api/games?key=${process.env.REACT_APP_RAWG_KEY}`;
 
 // Random Int for Home Page's quote
 export const getRandomInt = (min, max) => {

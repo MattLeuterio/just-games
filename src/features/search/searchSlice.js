@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { gameKey } from '../../utils';
 
 export const getSearchResults = createAsyncThunk(
   'search/getSearchResults',
   async (params) => {
-    return axios.get(`https://api.rawg.io/api/games`, { params: {search: params.text, page: params.page, parent_platforms: params.platform, genres: params.genre, ordering: params.ordering}})
+    return axios.get(`https://api.rawg.io/api/games?key=${gameKey}`, { params: {search: params.text, page: params.page, parent_platforms: params.platform, genres: params.genre, ordering: params.ordering}})
     .then(res => res.data).catch(err => console.error(err));
   }
 )
@@ -12,7 +13,7 @@ export const getSearchResults = createAsyncThunk(
 export const getPlatformsList = createAsyncThunk(
   'search/getPlatformsList',
   async () => {
-    return axios.get(`https://api.rawg.io/api/platforms/lists/parents`)
+    return axios.get(`https://api.rawg.io/api/platforms/lists/parents?key=${gameKey}`)
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
@@ -20,7 +21,7 @@ export const getPlatformsList = createAsyncThunk(
 export const getGenresList = createAsyncThunk(
   'search/getGenresList',
   async () => {
-    return axios.get(`https://api.rawg.io/api/genres`)
+    return axios.get(`https://api.rawg.io/api/genres?key=${gameKey}`)
     .then(res => res.data.results).catch(err => console.error(err));
   }
 )
